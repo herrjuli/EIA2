@@ -1,37 +1,35 @@
 @charset "utf-8";
+
 body {
-	float:right;
+	float: right;
 }
+
 #Aufnahme {
-	position:absolute;
-	background-color:black;
-	color:yellow;
-	text-align:center;
-	border : "thin solid black";
-	height : 200px;
+	position: absolute;
+	background-color: black;
+	color: yellow;
+	text-align: center;
+	border: "thin solid black";
+	height: 200px;
 	width: 135px;
 	margin-right: 200px;
-border-radius:10px;
+	border-radius: 10px;
 	left: 10px;
-	font-size:1.5em;
-	text-decoration:underline;
+	font-size: 1.5em;
+	text-decoration: underline;
 }
 
-#Ablage{
-	position:absolute;
-	background-color:black;
-	color:yellow;
-	text-align:center;
-	border : "thin solid black";
-	height : 200px;
+#Ablage {
+	position: absolute;
+	background-color: black;
+	color: yellow;
+	text-align: center;
+	border: "thin solid black";
+	height: 200px;
 	width: 135px;
 	margin-right: 200px;
-border-radius:10px;
-	font-size:1.5em;
+	border-radius: 10px;
+	font-size: 1.5em;
 	left: 200px;
-		text-decoration:underline;
-	
+	text-decoration: underline;
 }
-
-  
-    

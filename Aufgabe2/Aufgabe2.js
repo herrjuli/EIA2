@@ -464,6 +464,7 @@ var Aufgabe2;
             s.textAlign = "center";
             s.fontSize = 2 + "em";
             s.borderRadius = 10 + "px";
+            s.left = (n + 0.2) * 110 + "px";
         }
         for (var i = 0; i < o; i++) {
             var q = random(Deck.length);
@@ -471,7 +472,7 @@ var Aufgabe2;
             Deck.splice(q, 1);
             continue;
         }
-        document.addEventListener('DOMContentLoaded', spiel);
     }
+    document.addEventListener('DOMContentLoaded', spiel);
 })(Aufgabe2 || (Aufgabe2 = {}));
 //# sourceMappingURL=Aufgabe2.js.map
