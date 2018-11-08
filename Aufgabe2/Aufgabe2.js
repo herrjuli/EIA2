@@ -8,7 +8,7 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 var Aufgabe2;
 (function (Aufgabe2) {
-    function spiel() {
+    function playUno() {
         var Karte1 = {
             Farbe: "red",
             Wert: "0",
@@ -445,10 +445,10 @@ var Aufgabe2;
         var d = prompt("Bitte gewuenschte Handkartenanzahl eingeben");
         var o;
         o = Number(d);
-        function random(l) {
+        function giveRandomNumber(l) {
             return Math.floor(Math.random() * Math.floor(l));
         }
-        function start(_color, _nummer, n) {
+        function placeDiv(_color, _nummer, n) {
             var div = document.createElement("div");
             div.setAttribute("id", "Karte" + n);
             document.body.appendChild(div);
@@ -464,15 +464,15 @@ var Aufgabe2;
             s.textAlign = "center";
             s.fontSize = 2 + "em";
             s.borderRadius = 10 + "px";
-            s.left = (n + 0.2) * 110 + "px";
+            s.left = n * 200 + "px";
         }
         for (var i = 0; i < o; i++) {
-            var q = random(Deck.length);
-            start(Deck[q].Farbe, Deck[q].Wert, i);
+            var q = giveRandomNumber(Deck.length);
+            placeDiv(Deck[q].Farbe, Deck[q].Wert, i);
             Deck.splice(q, 1);
             continue;
         }
     }
-    document.addEventListener('DOMContentLoaded', spiel);
+    document.addEventListener('DOMContentLoaded', playUno);
 })(Aufgabe2 || (Aufgabe2 = {}));
 //# sourceMappingURL=Aufgabe2.js.map

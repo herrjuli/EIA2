@@ -12,7 +12,7 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 
 namespace Aufgabe2 {
-    function spiel() {
+    function playUno() {
         interface Karte {
             Farbe: string;
             Wert: string;
@@ -459,10 +459,10 @@ namespace Aufgabe2 {
         let d: string = prompt("Bitte gewuenschte Handkartenanzahl eingeben");
         let o: number;
         o = Number(d);
-        function random(l: number) {
+        function giveRandomNumber(l: number) {
             return Math.floor(Math.random() * Math.floor(l));
         }
-        function start(_color: string, _nummer: string, n: number) {
+        function placeDiv(_color: string, _nummer: string, n: number) {
             let div: HTMLDivElement = document.createElement("div");
             div.setAttribute("id", "Karte" + n);
             document.body.appendChild(div);
@@ -478,16 +478,16 @@ namespace Aufgabe2 {
             s.textAlign = "center";
             s.fontSize = 2 + "em";
             s.borderRadius = 10 + "px";
-            s.left = (n + 0.2) * 110 + "px";
+            s.left = n *200 + "px";
 
         }
-        for (let i = 0; i < o; i++) {
-            let q = random(Deck.length);
-            start(Deck[q].Farbe, Deck[q].Wert, i);
+        for (let i :number= 0; i < o; i++) {
+            let q:number = giveRandomNumber(Deck.length);
+            placeDiv(Deck[q].Farbe, Deck[q].Wert, i);
             Deck.splice(q, 1);
             continue;
 
         }
     }
-    document.addEventListener('DOMContentLoaded', spiel);
+    document.addEventListener('DOMContentLoaded', playUno);
 }
