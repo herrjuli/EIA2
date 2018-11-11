@@ -10,439 +10,439 @@ var Aufgabe2;
 (function (Aufgabe2) {
     document.addEventListener('DOMContentLoaded', playUno);
     function playUno() {
-        var Karte1 = {
+        var redCard1 = {
             color: "red",
             value: "0",
         };
-        var Karte2 = {
+        var redCard2 = {
             color: "red",
             value: "1",
         };
-        var Karte3 = {
+        var redCard3 = {
             color: "red",
             value: "1",
         };
-        var Karte4 = {
+        var redCard4 = {
             color: "red",
             value: "2",
         };
-        var Karte5 = {
+        var redCard5 = {
             color: "red",
             value: "2",
         };
-        var Karte6 = {
+        var redCard6 = {
             color: "red",
             value: "3",
         };
-        var Karte7 = {
+        var redCard7 = {
             color: "red",
             value: "3",
         };
-        var Karte8 = {
+        var redCard8 = {
             color: "red",
             value: "4",
         };
-        var Karte9 = {
+        var redCard9 = {
             color: "red",
             value: "4",
         };
-        var Karte10 = {
+        var redCard10 = {
             color: "red",
             value: "5",
         };
-        var Karte11 = {
+        var redCard11 = {
             color: "red",
             value: "5",
         };
-        var Karte12 = {
+        var redCard12 = {
             color: "red",
             value: "6",
         };
-        var Karte13 = {
+        var redCard13 = {
             color: "red",
             value: "6",
         };
-        var Karte14 = {
+        var redCard14 = {
             color: "red",
             value: "7",
         };
-        var Karte15 = {
+        var redCard15 = {
             color: "red",
             value: "7",
         };
-        var Karte16 = {
+        var redCard16 = {
             color: "red",
             value: "8",
         };
-        var Karte17 = {
+        var redCard17 = {
             color: "red",
             value: "8",
         };
-        var Karte18 = {
+        var redCard18 = {
             color: "red",
             value: "9",
         };
-        var Karte19 = {
+        var redCard19 = {
             color: "red",
             value: "9",
         };
-        var Karte20 = {
+        var redCard20 = {
             color: "red",
             value: "Aussetzen",
         };
-        var Karte21 = {
+        var redCard21 = {
             color: "red",
             value: "Aussetzen",
         };
-        var Karte22 = {
+        var redCard22 = {
             color: "red",
             value: "Richtungswechsel",
         };
-        var Karte23 = {
+        var redCard23 = {
             color: "red",
             value: "Richtungswechsel",
         };
-        var Karte24 = {
+        var redCard24 = {
             color: "red",
             value: "+2",
         };
-        var Karte25 = {
+        var redCard25 = {
             color: "red",
             value: "+2",
         };
-        var Karte26 = {
+        var blueCard26 = {
             color: "blue",
             value: "0",
         };
-        var Karte27 = {
+        var blueCard27 = {
             color: "blue",
             value: "1",
         };
-        var Karte28 = {
+        var blueCard28 = {
             color: "blue",
             value: "1",
         };
-        var Karte29 = {
+        var blueCard29 = {
             color: "blue",
             value: "2",
         };
-        var Karte30 = {
+        var blueCard30 = {
             color: "blue",
             value: "2",
         };
-        var Karte31 = {
+        var blueCard31 = {
             color: "blue",
             value: "3",
         };
-        var Karte32 = {
+        var blueCard32 = {
             color: "blue",
             value: "3",
         };
-        var Karte33 = {
+        var blueCard33 = {
             color: "blue",
             value: "4",
         };
-        var Karte34 = {
+        var blueCard34 = {
             color: "blue",
             value: "4",
         };
-        var Karte35 = {
+        var blueCard35 = {
             color: "blue",
             value: "5",
         };
-        var Karte36 = {
+        var blueCard36 = {
             color: "blue",
             value: "5",
         };
-        var Karte37 = {
+        var blueCard37 = {
             color: "blue",
             value: "6",
         };
-        var Karte38 = {
+        var blueCard38 = {
             color: "blue",
             value: "6",
         };
-        var Karte39 = {
+        var blueCard39 = {
             color: "blue",
             value: "7",
         };
-        var Karte40 = {
+        var blueCard40 = {
             color: "blue",
             value: "7",
         };
-        var Karte41 = {
+        var blueCard41 = {
             color: "blue",
             value: "8",
         };
-        var Karte42 = {
+        var blueCard42 = {
             color: "blue",
             value: "8",
         };
-        var Karte43 = {
+        var blueCard43 = {
             color: "blue",
             value: "9",
         };
-        var Karte44 = {
+        var blueCard44 = {
             color: "blue",
             value: "9",
         };
-        var Karte45 = {
+        var blueCard45 = {
             color: "blue",
             value: "Aussetzen",
         };
-        var Karte46 = {
+        var blueCard46 = {
             color: "blue",
             value: "Aussetzen",
         };
-        var Karte47 = {
+        var blueCard47 = {
             color: "blue",
             value: "Richtungswechsel",
         };
-        var Karte48 = {
+        var blueCard48 = {
             color: "blue",
             value: "Richtungswechsel",
         };
-        var Karte49 = {
+        var blueCard49 = {
             color: "blue",
             value: "+2",
         };
-        var Karte50 = {
+        var blueCard50 = {
             color: "blue",
             value: "+2",
         };
-        var Karte51 = {
+        var greenCard51 = {
             color: "green",
             value: "0",
         };
-        var Karte52 = {
+        var greenCard52 = {
             color: "green",
             value: "1",
         };
-        var Karte53 = {
+        var greenCard53 = {
             color: "green",
             value: "1",
         };
-        var Karte54 = {
+        var greenCard54 = {
             color: "green",
             value: "2",
         };
-        var Karte55 = {
+        var greenCard55 = {
             color: "green",
             value: "2",
         };
-        var Karte56 = {
+        var greenCard56 = {
             color: "green",
             value: "3",
         };
-        var Karte57 = {
+        var greenCard57 = {
             color: "green",
             value: "3",
         };
-        var Karte58 = {
+        var greenCard58 = {
             color: "green",
             value: "4",
         };
-        var Karte59 = {
+        var greenCard59 = {
             color: "green",
             value: "4",
         };
-        var Karte60 = {
+        var greenCard60 = {
             color: "green",
             value: "5",
         };
-        var Karte61 = {
+        var greenCard61 = {
             color: "green",
             value: "5",
         };
-        var Karte62 = {
+        var greenCard62 = {
             color: "green",
             value: "6",
         };
-        var Karte63 = {
+        var greenCard63 = {
             color: "green",
             value: "6",
         };
-        var Karte64 = {
+        var greenCard64 = {
             color: "green",
             value: "7",
         };
-        var Karte65 = {
+        var greenCard65 = {
             color: "green",
             value: "7",
         };
-        var Karte66 = {
+        var greenCard66 = {
             color: "green",
             value: "8",
         };
-        var Karte67 = {
+        var greenCard67 = {
             color: "green",
             value: "8",
         };
-        var Karte68 = {
+        var greenCard68 = {
             color: "green",
             value: "9",
         };
-        var Karte69 = {
+        var greenCard69 = {
             color: "green",
             value: "9",
         };
-        var Karte70 = {
+        var greenCard70 = {
             color: "green",
             value: "Aussetzen",
         };
-        var Karte71 = {
+        var greenCard71 = {
             color: "green",
             value: "Aussetzen",
         };
-        var Karte72 = {
+        var greenCard72 = {
             color: "green",
             value: "Richtungswechsel",
         };
-        var Karte73 = {
+        var greenCard73 = {
             color: "green",
             value: "Richtungswechsel",
         };
-        var Karte74 = {
+        var greenCard74 = {
             color: "green",
             value: "+2",
         };
-        var Karte75 = {
+        var greenCard75 = {
             color: "green",
             value: "+2",
         };
-        var Karte76 = {
+        var yellowCard76 = {
             color: "yellow",
             value: "0",
         };
-        var Karte77 = {
+        var yellowCard77 = {
             color: "yellow",
             value: "1",
         };
-        var Karte78 = {
+        var yellowCard78 = {
             color: "yellow",
             value: "1",
         };
-        var Karte79 = {
+        var yellowCard79 = {
             color: "yellow",
             value: "2",
         };
-        var Karte80 = {
+        var yellowCard80 = {
             color: "yellow",
             value: "2",
         };
-        var Karte81 = {
+        var yellowCard81 = {
             color: "yellow",
             value: "3",
         };
-        var Karte82 = {
+        var yellowCard82 = {
             color: "yellow",
             value: "3",
         };
-        var Karte83 = {
+        var yellowCard83 = {
             color: "yellow",
             value: "4",
         };
-        var Karte84 = {
+        var yellowCard84 = {
             color: "yellow",
             value: "4",
         };
-        var Karte85 = {
+        var yellowCard85 = {
             color: "yellow",
             value: "5",
         };
-        var Karte86 = {
+        var yellowCard86 = {
             color: "yellow",
             value: "5",
         };
-        var Karte87 = {
+        var yellowCard87 = {
             color: "yellow",
             value: "6",
         };
-        var Karte88 = {
+        var yellowCard88 = {
             color: "yellow",
             value: "6",
         };
-        var Karte89 = {
+        var yellowCard89 = {
             color: "yellow",
             value: "7",
         };
-        var Karte90 = {
+        var yellowCard90 = {
             color: "yellow",
             value: "7",
         };
-        var Karte91 = {
+        var yellowCard91 = {
             color: "yellow",
             value: "8",
         };
-        var Karte92 = {
+        var yellowCard92 = {
             color: "yellow",
             value: "8",
         };
-        var Karte93 = {
+        var yellowCard93 = {
             color: "yellow",
             value: "9",
         };
-        var Karte94 = {
+        var yellowCard94 = {
             color: "yellow",
             value: "9",
         };
-        var Karte95 = {
+        var yellowCard95 = {
             color: "yellow",
             value: "Aussetzen",
         };
-        var Karte96 = {
+        var yellowCard96 = {
             color: "yellow",
             value: "Aussetzen",
         };
-        var Karte97 = {
+        var yellowCard97 = {
             color: "yellow",
             value: "Richtungswechsel",
         };
-        var Karte98 = {
+        var yellowCard98 = {
             color: "yellow",
             value: "Richtungswechsel",
         };
-        var Karte99 = {
+        var yellowCard99 = {
             color: "yellow",
             value: "+2",
         };
-        var Karte100 = {
+        var yellowCard100 = {
             color: "yellow",
             value: "+2",
         };
-        var Karte101 = {
+        var blackCard101 = {
             color: "black",
             value: "+4",
         };
-        var Karte102 = {
+        var blackCard102 = {
             color: "black",
             value: "+4",
         };
-        var Karte103 = {
+        var blackCard103 = {
             color: "black",
             value: "+4",
         };
-        var Karte104 = {
+        var blackCard104 = {
             color: "black",
             value: "+4",
         };
-        var Karte105 = {
+        var blackCard105 = {
             color: "black",
             value: "Farbwahl",
         };
-        var Karte106 = {
+        var blackCard106 = {
             color: "black",
             value: "Farbwahl",
         };
-        var Karte107 = {
+        var blackCard107 = {
             color: "black",
             value: "Farbwahl",
         };
-        var Karte108 = {
+        var blackCard108 = {
             color: "black",
             value: "Farbwahl",
         };
-        var deck = [Karte1, Karte2, Karte3, Karte4, Karte5, Karte6, Karte7, Karte8, Karte9, Karte10, Karte11, Karte12, Karte13, Karte14, Karte15, Karte16, Karte17, Karte18, Karte19, Karte20, Karte21, Karte22, Karte23, Karte24, Karte25, Karte26, Karte27, Karte28, Karte29, Karte30, Karte31, Karte32, Karte33, Karte34, Karte35, Karte36, Karte37, Karte38, Karte39, Karte40, Karte41, Karte42, Karte43, Karte44, Karte45, Karte46, Karte47, Karte48, Karte49, Karte50, Karte51, Karte52, Karte53, Karte54, Karte55, Karte56, Karte57, Karte58, Karte59, Karte60, Karte61, Karte62, Karte63, Karte64, Karte65, Karte66, Karte67, Karte68, Karte69, Karte70, Karte71, Karte72, Karte73, Karte74, Karte75, Karte76, Karte77, Karte78, Karte79, Karte80, Karte81, Karte82, Karte83, Karte84, Karte85, Karte86, Karte87, Karte88, Karte89, Karte90, Karte91, Karte92, Karte93, Karte94, Karte95, Karte96, Karte97, Karte98, Karte99, Karte100, Karte101, Karte102, Karte103, Karte104, Karte105, Karte106, Karte107, Karte108];
+        var deck = [redCard1, redCard2, redCard3, redCard4, redCard5, redCard6, redCard7, redCard8, redCard9, redCard10, redCard11, redCard12, redCard13, redCard14, redCard15, redCard16, redCard17, redCard18, redCard19, redCard20, redCard21, redCard22, redCard23, redCard24, redCard25, blueCard26, blueCard27, blueCard28, blueCard29, blueCard30, blueCard31, blueCard32, blueCard33, blueCard34, blueCard35, blueCard36, blueCard37, blueCard38, blueCard39, blueCard40, blueCard41, blueCard42, blueCard43, blueCard44, blueCard45, blueCard46, blueCard47, blueCard48, blueCard49, blueCard50, greenCard51, greenCard52, greenCard53, greenCard54, greenCard55, greenCard56, greenCard57, greenCard58, greenCard59, greenCard60, greenCard61, greenCard62, greenCard63, greenCard64, greenCard65, greenCard66, greenCard67, greenCard68, greenCard69, greenCard70, greenCard71, greenCard72, greenCard73, greenCard74, greenCard75, yellowCard76, yellowCard77, yellowCard78, yellowCard79, yellowCard80, yellowCard81, yellowCard82, yellowCard83, yellowCard84, yellowCard85, yellowCard86, yellowCard87, yellowCard88, yellowCard89, yellowCard90, yellowCard91, yellowCard92, yellowCard93, yellowCard94, yellowCard95, yellowCard96, yellowCard97, yellowCard98, yellowCard99, yellowCard100, blackCard101, blackCard102, blackCard103, blackCard104, blackCard105, blackCard106, blackCard107, blackCard108];
         var d = prompt("Bitte gewuenschte Handkartenanzahl eingeben");
         var numberOfCards;
         numberOfCards = Number(d);
@@ -467,30 +467,29 @@ var Aufgabe2;
             s.borderRadius = 10 + "px";
             s.left = n * 200 + "px";
         }
-        var Hand = [];
+        var hand = [];
         for (var i = 0; i < numberOfCards; i++) {
             var q = giveRandomNumber(deck.length);
             placeDiv(deck[q].color, deck[q].value, i);
             var handCard = deck.splice(q, 1)[0];
-            Hand.push(handCard);
-            continue;
+            hand.push(handCard);
+            var button = document.createElement("button");
+            button.setAttribute("id", "button");
+            document.body.appendChild(button);
+            document.getElementById("button").innerHTML += "Karten sortieren";
+            var b = button.style;
+            b.border = "thin solid black";
+            b.position = "absolute";
+            b.backgroundColor = "pink";
+            b.color = "black";
+            b.width = 250 + "px";
+            b.height = 100 + "px";
+            b.top = 25 + "px";
+            b.textAlign = "center";
+            b.fontSize = 2 + "em";
+            b.borderRadius = 10 + "px";
+            b.right = 25 + "px";
         }
-        var button = document.createElement("button");
-        button.setAttribute("id", "button");
-        document.body.appendChild(button);
-        document.getElementById("button").innerHTML += "Karten sortieren";
-        var b = button.style;
-        b.border = "thin solid black";
-        b.position = "absolute";
-        b.backgroundColor = "purple";
-        b.color = "black";
-        b.width = 300 + "px";
-        b.height = 100 + "px";
-        b.top = 25 + "px";
-        b.textAlign = "center";
-        b.fontSize = 2 + "em";
-        b.borderRadius = 10 + "px";
-        b.right = 25 + "px";
     }
 })(Aufgabe2 || (Aufgabe2 = {}));
 //# sourceMappingURL=Aufgabe3.js.map

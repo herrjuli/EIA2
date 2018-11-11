@@ -19,7 +19,7 @@ namespace Aufgabe2 {
             color: string;
             value: string;
         }
-        let redcard1: Cards = {
+        let redCard1: Cards = {
             color: "red",
             value: "0",
         }
@@ -456,7 +456,7 @@ namespace Aufgabe2 {
             color: "black",
             value: "Farbwahl",
         }
-        let deck: Cards[] = [redCard1, redCard2, redCard3, redCard4, redCard5, redCard6, redCard7, redCard8, redCard9, redCard10, redCard11, redCard12, redCard13, redCard14, redCard15, redCard16, redCard17, redCard18, redCard19, redCard20, redCard21, redCard22, redCard23, redCard24, redCard25, blueCard26, blueCard27, blueCard28, blueCard29, blueCard30, blueCard1, blueCard32, blueCard33, blueCard34, blueCard35, blueCard36, blueCard37, blueCard38, blueCard39, blueCard40, blueCard41, blueCard42, blueCard43, blueCard44, blueCard45, blueCard46, blueCard47, blueCard48, blueCard49, blueCard50, greenCard51, greenCard52, greenCard53, greenCard54, greenCard55, greenCard56, greenCard57, greenCard58, greenCard59, greenCard60, greenCard61, greenCard62, greenCard63, greenCard64, greenCard65, greenCard66, greenCard67, greenCard68, greenCard69, greenCard70, greenCard71, greenCard72, greenCard73, greenCard74, greenCard75, yellowCard76, yellowCard77, yellowCard78, yellowCard79, yellowCard80, yellowCard81, yellowCard82, yellowCard83, yellowCard84, yellowCard85, yellowCard86, yellowCard87, yellowCard88, yellowCard89, yellowCard90, yellowCard91, yellowCard92, yellowCard93, yellowCard94, yellowCard95, yellowCarrd96, yellowCard97, yellowCard98, yellowCard99, yellowCard100, blackCard101, blackCard102, blackCard103, blackCard104, blackCard105, blackCard106, blackCard107, blackCard108]
+        let deck: Cards[] = [redCard1, redCard2, redCard3, redCard4, redCard5, redCard6, redCard7, redCard8, redCard9, redCard10, redCard11, redCard12, redCard13, redCard14, redCard15, redCard16, redCard17, redCard18, redCard19, redCard20, redCard21, redCard22, redCard23, redCard24, redCard25, blueCard26, blueCard27, blueCard28, blueCard29, blueCard30, blueCard31, blueCard32, blueCard33, blueCard34, blueCard35, blueCard36, blueCard37, blueCard38, blueCard39, blueCard40, blueCard41, blueCard42, blueCard43, blueCard44, blueCard45, blueCard46, blueCard47, blueCard48, blueCard49, blueCard50, greenCard51, greenCard52, greenCard53, greenCard54, greenCard55, greenCard56, greenCard57, greenCard58, greenCard59, greenCard60, greenCard61, greenCard62, greenCard63, greenCard64, greenCard65, greenCard66, greenCard67, greenCard68, greenCard69, greenCard70, greenCard71, greenCard72, greenCard73, greenCard74, greenCard75, yellowCard76, yellowCard77, yellowCard78, yellowCard79, yellowCard80, yellowCard81, yellowCard82, yellowCard83, yellowCard84, yellowCard85, yellowCard86, yellowCard87, yellowCard88, yellowCard89, yellowCard90, yellowCard91, yellowCard92, yellowCard93, yellowCard94, yellowCard95, yellowCard96, yellowCard97, yellowCard98, yellowCard99, yellowCard100, blackCard101, blackCard102, blackCard103, blackCard104, blackCard105, blackCard106, blackCard107, blackCard108]
 
         let d: string = prompt("Bitte gewuenschte Handkartenanzahl eingeben");
         let numberOfCards: number;
@@ -484,14 +484,13 @@ namespace Aufgabe2 {
 
         }
         let hand: Cards[] = [];
-        function makeCard () {
         for (let i: number = 0; i < numberOfCards; i++) {
             let q: number = giveRandomNumber(deck.length);
             placeDiv(deck[q].color, deck[q].value, i);
             let handCard: Cards = deck.splice(q, 1)[0];
             hand.push(handCard);
-            }
-        }
+            
+        
 var button = document.createElement("button");
           button.setAttribute("id", "button");
            document.body.appendChild(button);
@@ -499,37 +498,28 @@ var button = document.createElement("button");
              let b = button.style;
             b.border = "thin solid black";
             b.position = "absolute";
-            b.backgroundColor = "black";
+            b.backgroundColor = "pink";
             b.color = "black";
             b.width = 250 + "px";
-            b.height = 80 + "px";
+            b.height = 100 + "px";
             b.top = 25 + "px";
             b.textAlign = "center";
             b.fontSize = 2 + "em";
             b.borderRadius = 10 + "px";
             b.right = 25 + "px";
-    }
-button.addEventListener("click",sortByColor);
-    console.log(hand[]);
-    function sortByColor(hand[]:Cards=[]);{
-    hand.sort();
-        console.log(hand[]);
-    placeDiv(hand);
+
+            
+}
         }
-function pull() {
-    makeCard()
-  
+
+
+    
+
+
+
+
+
+
+
+
 }
-
-
-
-}
-
-
-
-
-
-
-
-
-
