@@ -21,8 +21,7 @@ body {
 
 #Ablage {
 	position: absolute;
-	background-color: black;
-	color: yellow;
+	background-color: black; 
 	text-align: center;
 	border: "thin solid black";
 	height: 200px;
@@ -32,4 +31,14 @@ body {
 	font-size: 1.5em;
 	left: 200px;
 	text-decoration: underline;
+}
+
+.Stack {
+		border: "thin solid black";
+	height: 200px;
+	width: 135px;
+	border-radius: 10px;
+	font-size: 1.5em;
+	position: absolute;
+}
 }
