@@ -13,13 +13,13 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 namespace Aufgabe4 {
 
-       document.addEventListener("DOMContentLoaded", fillFieldset);
+    document.addEventListener("DOMContentLoaded", fillFieldset);
     document.addEventListener("DOMContentLoaded", changeListener);
-   
+
     function changeListener(_event) {
-        var fieldset = document.getElementById("fieldset");
+        var fieldset = document.getElementById("f1");
         fieldset.addEventListener("change", handleChange);
-        }
+    }
     var priceTree = 0;
     var priceTreeStands = 0;
     var priceCandles = 0;
@@ -32,9 +32,9 @@ namespace Aufgabe4 {
     var adress = "";
     function fillFieldset() {
         var node = document.getElementById("f1");
-         document.getElementById("button").addEventListener("click", checkCheckout);
+        document.getElementById("button").addEventListener("click", checkCheckout);
         var childNodeHTML;
-         childNodeHTML = "<h3>Baum</h3>";
+        childNodeHTML = "<h3>Baum</h3>";
         childNodeHTML += "<select name='Select' id='tree'>";
         for (var i = 0; i < trees.length; i++) {
             childNodeHTML += "<option value='" + i + trees[i].typ + " " + trees[i].price + " Euro'>" + trees[i].typ + " " + trees[i].price + " Euro</option>";
@@ -78,7 +78,7 @@ namespace Aufgabe4 {
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<hr>";
-        
+
         childNodeHTML += "<h3>Kerzen</h3>";
         childNodeHTML += "<select name='Select' id='candles'>";
         for (var i = 0; i < candles.length; i++) {
@@ -111,13 +111,13 @@ namespace Aufgabe4 {
 
 
         let target: HTMLInputElement = <HTMLInputElement>_event.target
-        
+
         if (target.id == "trees") {
             let node: HTMLElement = document.getElementById("tree");
             let value: string = target.value;
             let priceIndex: number = parseInt(value.substr(0, 1));
             priceTree = trees[priceIndex].price
-            
+
             let childNodeHTML: string;
 
             childNodeHTML = "";
@@ -127,7 +127,7 @@ namespace Aufgabe4 {
 
             node.innerHTML = childNodeHTML;
         }
-        
+
         if (target.name == "Radiogroup") {
             let node: HTMLElement = document.getElementById("holder")
             let value: string = target.value;
@@ -143,7 +143,7 @@ namespace Aufgabe4 {
 
             node.innerHTML = childNodeHTML;
         }
-        
+
         if (target.id == "kugeln") {
             let node: HTMLElement = document.getElementById("ball")
             let value: string = target.value;
@@ -240,7 +240,7 @@ namespace Aufgabe4 {
 
             node.innerHTML = childNodeHTML;
         }
-      
+
         if (target.id == "ship") {
             let node: HTMLElement = document.getElementById("shipping")
             let value: string = target.value;
@@ -256,7 +256,7 @@ namespace Aufgabe4 {
 
             node.innerHTML = childNodeHTML;
         }
-       
+
         if (target.id == "ad") {
             let node: HTMLElement = document.getElementById("adress");
             adress = target.value;
@@ -282,16 +282,15 @@ namespace Aufgabe4 {
 
     function checkCheckout(_event: Event): void {
         if (adress == "" || priceTree == 0 || priceTreeStands == 0 || priceChristmasOrnaments == 0 || priceTinsel == 0 || priceCandles == 0 || priceService == 0 || numberOfChristmasOrnaments == 0 || numberOfTinsel == 0 || numberOfCandles == 0) {
-            document.getElementById("missing").innerHTML = "fehlende Angaben";
+            document.getElementById("missing").innerHTML = "Bitte fehlende Felder ausfuellen";
         }
 
         else {
 
             document.getElementById("missing").innerHTML = "";
         }
-        }
-        }
-    
-        
-    
-    
+    }
+}
+
+
+

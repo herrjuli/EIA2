@@ -1,16 +1,27 @@
 @charset "utf-8";
 
-
 body {
-	background-color:lightyellow;
+	background-color: lightgreen;
 }
 
 fieldset {
-	background-color:lightgreen;
+	background-color: red;
+	width: 700px;
+	border-color: darkgreen;
+}
+
+#div {
+	top: 10px;
+	right: 250px;
+	position: absolute;
+}
+
+.text {
+	color: darkgreen;
 }
 
 #button {
-	background-color:red;
-	border-radius:10px;
-	border-color:darkred;
+	background-color: red;
+	border-radius: 10px;
+	border-color: darkred;
 }

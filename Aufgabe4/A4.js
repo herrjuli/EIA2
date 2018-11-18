@@ -11,7 +11,7 @@ var Aufgabe4;
     document.addEventListener("DOMContentLoaded", fillFieldset);
     document.addEventListener("DOMContentLoaded", changeListener);
     function changeListener(_event) {
-        var fieldset = document.getElementById("fieldset");
+        var fieldset = document.getElementById("f1");
         fieldset.addEventListener("change", handleChange);
     }
     var priceTree = 0;
@@ -234,7 +234,7 @@ var Aufgabe4;
     }
     function checkCheckout(_event) {
         if (adress == "" || priceTree == 0 || priceTreeStands == 0 || priceChristmasOrnaments == 0 || priceTinsel == 0 || priceCandles == 0 || priceService == 0 || numberOfChristmasOrnaments == 0 || numberOfTinsel == 0 || numberOfCandles == 0) {
-            document.getElementById("missing").innerHTML = "fehlende Angaben";
+            document.getElementById("missing").innerHTML = "Bitte fehlende Felder ausfuellen";
         }
         else {
             document.getElementById("missing").innerHTML = "";

@@ -17,19 +17,19 @@ var Aufgabe4;
     ];
     Aufgabe4.treeStands = [
         { typ: "Keine Auswahl", price: 0.00 },
-        { typ: "Christbaumstaender gruen", price: 12.59 },
-        { typ: "Christbaumstaender rot", price: 12.59 },
+        { typ: "gruen", price: 12.59 },
+        { typ: "rot", price: 12.59 },
     ];
     Aufgabe4.candles = [
         { typ: "Keine Auswahl", price: 0.00 },
         { typ: "rot", price: 1.00 },
         { typ: "blau", price: 1.00 },
         { typ: "orange", price: 1.00 },
-        { typ: "porzelanwei�", price: 1.00 }
+        { typ: "porzelanweiss", price: 1.00 }
     ];
     Aufgabe4.christmasOrnaments = [
         { typ: "Keine Auswahl", price: 0.00 },
-        { typ: "red", price: 1.00 },
+        { typ: "rot", price: 1.00 },
         { typ: "silber", price: 1.00 },
         { typ: "lila", price: 1.00 },
     ];
