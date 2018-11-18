@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+
+body {
+	background-color:lightyellow;
+}
+
+fieldset {
+	background-color:lightgreen;
+}
+
+#button {
+	background-color:red;
+	border-radius:10px;
+	border-color:darkred;
+}
