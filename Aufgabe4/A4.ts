@@ -29,7 +29,7 @@ namespace Aufgabe4 {
     var numberOfCandles = 0;
     var numberOfChristmasOrnaments = 0;
     var numberOfTinsel = 0;
-    var adress = "";
+    var adress = ""; 
     function fillFieldset() {
         var node = document.getElementById("f1");
         document.getElementById("button").addEventListener("click", checkCheckout);
