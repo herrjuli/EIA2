@@ -35,7 +35,7 @@ namespace Aufgabe4 {
         document.getElementById("button").addEventListener("click", checkCheckout);
         var childNodeHTML;
         childNodeHTML = "<h3>Baum</h3>";
-        childNodeHTML += "<select name='Select' id='tree'>";
+        childNodeHTML += "<select name='Select' id='trees'>";
         for (var i = 0; i < trees.length; i++) {
             childNodeHTML += "<option value='" + i + trees[i].typ + " " + trees[i].price + " Euro'>" + trees[i].typ + " " + trees[i].price + " Euro</option>";
         }

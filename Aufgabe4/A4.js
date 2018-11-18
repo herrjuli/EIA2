@@ -29,7 +29,7 @@ var Aufgabe4;
         document.getElementById("button").addEventListener("click", checkCheckout);
         var childNodeHTML;
         childNodeHTML = "<h3>Baum</h3>";
-        childNodeHTML += "<select name='Select' id='tree'>";
+        childNodeHTML += "<select name='Select' id='trees'>";
         for (var i = 0; i < Aufgabe4.trees.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe4.trees[i].typ + " " + Aufgabe4.trees[i].price + " Euro'>" + Aufgabe4.trees[i].typ + " " + Aufgabe4.trees[i].price + " Euro</option>";
         }
