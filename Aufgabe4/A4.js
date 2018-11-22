@@ -173,7 +173,6 @@ var Aufgabe4;
             childNodeHTML_6 += "</a>";
             node_6.innerHTML = childNodeHTML_6;
         }
-        //Kerzen
         if (target.id == "candles") {
             var node_7 = document.getElementById("candle");
             var value = target.value;

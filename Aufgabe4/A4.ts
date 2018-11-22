@@ -208,7 +208,6 @@ namespace Aufgabe4 {
             node.innerHTML = childNodeHTML;
         }
 
-        //Kerzen
         if (target.id == "candles") {
             let node: HTMLElement = document.getElementById("candle")
             let value: string = target.value;
