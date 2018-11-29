@@ -2,7 +2,7 @@ import * as Http from "http";
 // Übernimmt die node.d.ts Datei und mit HTTP from "http" kann auf die HTTP-Objekte aus node.d.ts zugegriffen werden 
 namespace L06_SendData {
     // Erstellt einen Raum namens L06_SendData, in dem alle Variablennamen neu vergeben werden können und nur für diesen gelten.
-    console.log("Starting server");
+    console.log("Starting server"); 
     // Die Konsole gibt "Starting server" aus.
     let port: number = process.env.PORT;
     // Die Varbiable port wird als number deklariert und bekommt den Wert des Ports des Heroku-Server. 
