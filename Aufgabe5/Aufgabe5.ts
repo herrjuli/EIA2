@@ -1,8 +1,8 @@
 /*
-Aufgabe:5
+Aufgabe:6
 Name: Julia Herr
 Matrikel: 259568
-Datum: 25.11.2018
+Datum: 02.12.2018
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
@@ -29,7 +29,7 @@ namespace Aufgabe5 {
         let node = document.getElementById("f1");
         let childNodeHTML;
         childNodeHTML = "<h3>Baum</h3>";
-        childNodeHTML += "<select name='Select' id='trees'>";
+        childNodeHTML += "<select name='Baum' id='trees'>";
         for (var i = 0; i < trees.length; i++) {
             childNodeHTML += "<option value='" + i + trees[i].typ + " " + trees[i].price + " Euro'>" + trees[i].typ + " " + trees[i].price + " Euro</option title='" + trees[i].typ + "' + price='" + trees[i].price + "' description='Baum'/>";
         }
@@ -37,7 +37,7 @@ namespace Aufgabe5 {
         childNodeHTML += "<hr>";
 
         childNodeHTML += "<h3>Christbaumstaender</h3>";
-        childNodeHTML += "<select name='Select' id='treeStands'>";
+        childNodeHTML += "<select name='Christbaumstaender' id='treeStands'>";
         for (var i = 0; i < treeStands.length; i++) {
             childNodeHTML += "<option value='" + i + treeStands[i].typ + " " + treeStands[i].price + " Euro'>" + treeStands[i].typ + " " + treeStands[i].price + " Euro</option>";
         }
@@ -47,14 +47,14 @@ namespace Aufgabe5 {
         childNodeHTML += "<h3>Christbaumkugeln</h3>";
         for (let i: number = 0; i < christmasOrnaments.length; i++) {
             childNodeHTML += christmasOrnaments[i].typ + christmasOrnaments[i].price + " " + "Euro";
-            childNodeHTML += "<input type='number' id='COAmounts" + i + "' name='Stepper' step='1' min='0' max='50' value='0' title='" + christmasOrnaments[i].typ + "' price='" + christmasOrnaments[i].price + "' description='Christbaumkugeln'/>";
+            childNodeHTML += "<input type='number' id='COAmounts" + i + "' name='Kugeln' step='1' min='0' max='50' value='0' title='" + christmasOrnaments[i].typ + "' price='" + christmasOrnaments[i].price + "' description='Christbaumkugeln'/>";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Lametta</h3>";
         for (let i: number = 0; i < tinsel.length; i++) {
             childNodeHTML += tinsel[i].typ + tinsel[i].price + " " + "Euro";
-            childNodeHTML += "<input type='number' id='tinselAmounts" + i + "' name='Stepper' step='1' min='0' max='50' value='0' title='" + tinsel[i].typ + "' price='" + tinsel[i].price + "'description='Lametta'/>";
+            childNodeHTML += "<input type='number' id='tinselAmounts" + i + "' name='Lametta' step='1' min='0' max='50' value='0' title='" + tinsel[i].typ + "' price='" + tinsel[i].price + "'description='Lametta'/>";
             childNodeHTML += "<br>";
             continue;
         }
@@ -63,19 +63,19 @@ namespace Aufgabe5 {
         childNodeHTML += "<h3>Kerzen</h3>";
         for (let i: number = 0; i < candles.length; i++) {
             childNodeHTML += candles[i].typ + candles[i].price + " " + "Euro";
-            childNodeHTML += "<input type='number' id='candlesAmounts" + i + "' name='Stepper' step='1' min='0' max='50' value='0' title='" + candles[i].typ + "' price='" + candles[i].price + "'description='Kerzen'/>";
+            childNodeHTML += "<input type='number' id='candlesAmounts" + i + "' name='Kerzen' step='1' min='0' max='50' value='0' title='" + candles[i].typ + "' price='" + candles[i].price + "'description='Kerzen'/>";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Lieferoptionen</h3>";
-        childNodeHTML += "<select name='Select' id='ship'>";
+        childNodeHTML += "<select name='Lieferoptionen' id='ship'>";
         for (var i = 0; i < options.length; i++) {
             childNodeHTML += "<option value='" + i + options[i].typ + " " + options[i].price + " Euro'>" + options[i].typ + " " + options[i].price + " Euro</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Adresse</h3>";
-        childNodeHTML += "<input id='ad' type='text' name='Text' placeholder='enter adress here' required/>";
+        childNodeHTML += "<input id='ad' type='text' name='Adresse' placeholder='enter adress here' required/>";
         node.innerHTML += childNodeHTML;
     }
 

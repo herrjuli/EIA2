@@ -1,8 +1,8 @@
 /*
-Aufgabe:5
+Aufgabe:6
 Name: Julia Herr
 Matrikel: 259568
-Datum: 25.11.2018
+Datum: 02.12.2018
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
@@ -12,25 +12,25 @@ var Aufgabe5;
     document.addEventListener("DOMContentLoaded", changeListener);
     document.addEventListener("DOMContentLoaded", init);
     function changeListener(_event) {
-        var fieldset = document.getElementById("f1");
+        let fieldset = document.getElementById("f1");
         fieldset.addEventListener("change", handleChange);
     }
-    var priceTree = 0;
-    var priceTreeStands = 0;
-    var priceService = 0;
-    var adress = "";
+    let priceTree = 0;
+    let priceTreeStands = 0;
+    let priceService = 0;
+    let adress = "";
     function fillFieldset() {
-        var node = document.getElementById("f1");
-        var childNodeHTML;
+        let node = document.getElementById("f1");
+        let childNodeHTML;
         childNodeHTML = "<h3>Baum</h3>";
-        childNodeHTML += "<select name='Select' id='trees'>";
+        childNodeHTML += "<select name='Baum' id='trees'>";
         for (var i = 0; i < Aufgabe5.trees.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe5.trees[i].typ + " " + Aufgabe5.trees[i].price + " Euro'>" + Aufgabe5.trees[i].typ + " " + Aufgabe5.trees[i].price + " Euro</option title='" + Aufgabe5.trees[i].typ + "' + price='" + Aufgabe5.trees[i].price + "' description='Baum'/>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<hr>";
         childNodeHTML += "<h3>Christbaumstaender</h3>";
-        childNodeHTML += "<select name='Select' id='treeStands'>";
+        childNodeHTML += "<select name='Christbaumstaender' id='treeStands'>";
         for (var i = 0; i < Aufgabe5.treeStands.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe5.treeStands[i].typ + " " + Aufgabe5.treeStands[i].price + " Euro'>" + Aufgabe5.treeStands[i].typ + " " + Aufgabe5.treeStands[i].price + " Euro</option>";
         }
@@ -38,65 +38,65 @@ var Aufgabe5;
         childNodeHTML += "<br>";
         childNodeHTML += "<hr>";
         childNodeHTML += "<h3>Christbaumkugeln</h3>";
-        for (var i_1 = 0; i_1 < Aufgabe5.christmasOrnaments.length; i_1++) {
-            childNodeHTML += Aufgabe5.christmasOrnaments[i_1].typ + Aufgabe5.christmasOrnaments[i_1].price + " " + "Euro";
-            childNodeHTML += "<input type='number' id='COAmounts" + i_1 + "' name='Stepper' step='1' min='0' max='50' value='0' title='" + Aufgabe5.christmasOrnaments[i_1].typ + "' price='" + Aufgabe5.christmasOrnaments[i_1].price + "' description='Christbaumkugeln'/>";
+        for (let i = 0; i < Aufgabe5.christmasOrnaments.length; i++) {
+            childNodeHTML += Aufgabe5.christmasOrnaments[i].typ + Aufgabe5.christmasOrnaments[i].price + " " + "Euro";
+            childNodeHTML += "<input type='number' id='COAmounts" + i + "' name='Kugeln' step='1' min='0' max='50' value='0' title='" + Aufgabe5.christmasOrnaments[i].typ + "' price='" + Aufgabe5.christmasOrnaments[i].price + "' description='Christbaumkugeln'/>";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Lametta</h3>";
-        for (var i_2 = 0; i_2 < Aufgabe5.tinsel.length; i_2++) {
-            childNodeHTML += Aufgabe5.tinsel[i_2].typ + Aufgabe5.tinsel[i_2].price + " " + "Euro";
-            childNodeHTML += "<input type='number' id='tinselAmounts" + i_2 + "' name='Stepper' step='1' min='0' max='50' value='0' title='" + Aufgabe5.tinsel[i_2].typ + "' price='" + Aufgabe5.tinsel[i_2].price + "'description='Lametta'/>";
+        for (let i = 0; i < Aufgabe5.tinsel.length; i++) {
+            childNodeHTML += Aufgabe5.tinsel[i].typ + Aufgabe5.tinsel[i].price + " " + "Euro";
+            childNodeHTML += "<input type='number' id='tinselAmounts" + i + "' name='Lametta' step='1' min='0' max='50' value='0' title='" + Aufgabe5.tinsel[i].typ + "' price='" + Aufgabe5.tinsel[i].price + "'description='Lametta'/>";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Kerzen</h3>";
-        for (var i_3 = 0; i_3 < Aufgabe5.candles.length; i_3++) {
-            childNodeHTML += Aufgabe5.candles[i_3].typ + Aufgabe5.candles[i_3].price + " " + "Euro";
-            childNodeHTML += "<input type='number' id='candlesAmounts" + i_3 + "' name='Stepper' step='1' min='0' max='50' value='0' title='" + Aufgabe5.candles[i_3].typ + "' price='" + Aufgabe5.candles[i_3].price + "'description='Kerzen'/>";
+        for (let i = 0; i < Aufgabe5.candles.length; i++) {
+            childNodeHTML += Aufgabe5.candles[i].typ + Aufgabe5.candles[i].price + " " + "Euro";
+            childNodeHTML += "<input type='number' id='candlesAmounts" + i + "' name='Kerzen' step='1' min='0' max='50' value='0' title='" + Aufgabe5.candles[i].typ + "' price='" + Aufgabe5.candles[i].price + "'description='Kerzen'/>";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Lieferoptionen</h3>";
-        childNodeHTML += "<select name='Select' id='ship'>";
+        childNodeHTML += "<select name='Lieferoptionen' id='ship'>";
         for (var i = 0; i < Aufgabe5.options.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe5.options[i].typ + " " + Aufgabe5.options[i].price + " Euro'>" + Aufgabe5.options[i].typ + " " + Aufgabe5.options[i].price + " Euro</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Adresse</h3>";
-        childNodeHTML += "<input id='ad' type='text' name='Text' placeholder='enter adress here' required/>";
+        childNodeHTML += "<input id='ad' type='text' name='Adresse' placeholder='enter adress here' required/>";
         node.innerHTML += childNodeHTML;
     }
     function handleChange(_event) {
-        var target = _event.target;
-        var articles = document.getElementsByTagName("input");
-        var div = document.getElementById("div");
-        var section = document.getElementById("section");
+        let target = _event.target;
+        let articles = document.getElementsByTagName("input");
+        let div = document.getElementById("div");
+        let section = document.getElementById("section");
         section.innerHTML = "";
-        for (var i = 0; i < articles.length; i++) {
-            var article = articles[i];
-            var section_1 = document.getElementById("section");
-            var p = document.createElement("p");
-            var articleName = article.getAttribute("title");
-            var articlePrice = Number(article.getAttribute("price"));
-            var articleDescription = article.getAttribute("description");
-            var articleAmount = parseInt(article.getAttribute("value"));
-            var eventValue = Number(target.value);
+        for (let i = 0; i < articles.length; i++) {
+            let article = articles[i];
+            let section = document.getElementById("section");
+            let p = document.createElement("p");
+            let articleName = article.getAttribute("title");
+            let articlePrice = Number(article.getAttribute("price"));
+            let articleDescription = article.getAttribute("description");
+            let articleAmount = parseInt(article.getAttribute("value"));
+            let eventValue = Number(target.value);
             target.setAttribute("value", eventValue.toFixed());
-            var articleValue = Number(article.getAttribute("value"));
+            let articleValue = Number(article.getAttribute("value"));
             p.setAttribute("price", (articlePrice * articleValue).toString());
             if (articleValue > 0) {
                 p.innerText = articleDescription + ": " + articleValue + "* " + articleName + " " + articlePrice * articleValue + " Euro";
             }
-            section_1.appendChild(p);
+            section.appendChild(p);
             if (target.id == "trees") {
-                var node = document.getElementById("tree");
-                var value = target.value;
-                var priceIndex = parseInt(value.substr(0, 1));
+                let node = document.getElementById("tree");
+                let value = target.value;
+                let priceIndex = parseInt(value.substr(0, 1));
                 priceTree = Aufgabe5.trees[priceIndex].price;
-                var childNodeHTML = void 0;
+                let childNodeHTML;
                 childNodeHTML = "";
                 childNodeHTML += "<a>";
                 childNodeHTML += " " + value.substr(1);
@@ -104,11 +104,11 @@ var Aufgabe5;
                 node.innerHTML = childNodeHTML;
             }
             if (target.id == "treeStands") {
-                var node = document.getElementById("treeStand");
-                var value = target.value;
-                var priceIndex = parseInt(value.substr(0, 1));
+                let node = document.getElementById("treeStand");
+                let value = target.value;
+                let priceIndex = parseInt(value.substr(0, 1));
                 priceTreeStands = Aufgabe5.treeStands[priceIndex].price;
-                var childNodeHTML = void 0;
+                let childNodeHTML;
                 childNodeHTML = "";
                 childNodeHTML += "<a>";
                 childNodeHTML += " " + value.substr(1);
@@ -116,12 +116,12 @@ var Aufgabe5;
                 node.innerHTML = childNodeHTML;
             }
             if (target.id == "ship") {
-                var node = document.getElementById("shipping");
-                var value = target.value;
-                var priceIndex = parseInt(value.substr(0, 1));
+                let node = document.getElementById("shipping");
+                let value = target.value;
+                let priceIndex = parseInt(value.substr(0, 1));
                 priceService = Aufgabe5.options[priceIndex].price;
                 console.log(priceService);
-                var childNodeHTML = void 0;
+                let childNodeHTML;
                 childNodeHTML = "";
                 childNodeHTML += "<a>";
                 childNodeHTML += " " + value.substr(1);
@@ -130,9 +130,9 @@ var Aufgabe5;
             }
         }
         if (target.id == "ad") {
-            var node = document.getElementById("adress");
+            let node = document.getElementById("adress");
             adress = target.value;
-            var childNodeHTML = void 0;
+            let childNodeHTML;
             childNodeHTML = "";
             childNodeHTML += "<a price='0'>";
             childNodeHTML += " " + target.value;
@@ -142,8 +142,8 @@ var Aufgabe5;
         summarizeTotalPrice();
     }
     function summarizeTotalPrice() {
-        var element = document.getElementById("section");
-        var price = 0;
+        let element = document.getElementById("section");
+        let price = 0;
         console.log(element.childNodes);
         for (var i = 0; i < element.childNodes.length - 1; i++) {
             var article = element.childNodes[i];
