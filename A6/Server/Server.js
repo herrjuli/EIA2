@@ -36,25 +36,30 @@ var L06_SendData;
         // setzt "content-type" und "text/html; charset=utf-8" in header
         _response.setHeader("Access-Control-Allow-Origin", "*");
         // setzt Access-Control-Allow-Origin und * in den header.
-        let url = _request.url;
-        if (url != "/favicon.ico") {
-            let paragraph = Url.parse(url).search.substr(1);
-            let childNodeHTML = "";
-            for (let i = 0; i < paragraph.length; i++) {
-                if (paragraph[i] == "&") {
-                    item.push(childNodeHTML);
-                    childNodeHTML = "<br>";
-                }
-                else {
-                    childNodeHTML += paragraph[i];
-                }
-            }
-            item.push(childNodeHTML);
-            for (let i = 0; i < item.length; i++) {
-                _response.write(item[i]);
-            }
-            console.log(item);
-        }
+        /*  let url: string = _request.url;
+          if (url != "/favicon.ico") {
+              let paragraph: string = Url.parse(url).search.substr(1);
+              let childNodeHTML: string = "";
+              for (let i: number = 0; i < paragraph.length; i++) {
+                  if (paragraph[i] == "&") {
+                      item.push(childNodeHTML);
+                      childNodeHTML = "<br>";
+                  }
+                  else {
+                      childNodeHTML += paragraph[i];
+                  }
+              }
+              item.push(childNodeHTML);
+  
+              for (let i: number = 0; i < item.length; i++) {
+                  _response.write(item[i]);
+              }
+              console.log(item);
+          }*/
+        let url = Url.parse(_request.url, true);
+        for (let key in url.query)
+            _response.write(key + ":" + url.query[key] + "<br/>");
+        console.log(url.query);
         _response.end();
     }
 })(L06_SendData || (L06_SendData = {}));

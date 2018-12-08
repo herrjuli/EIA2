@@ -1,8 +1,8 @@
 /*
-Aufgabe:6
+Aufgabe:7
 Name: Julia Herr
 Matrikel: 259568
-Datum: 02.12.2018
+Datum: 08.12.2018
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
@@ -11,6 +11,7 @@ var Aufgabe5;
     document.addEventListener("DOMContentLoaded", fillFieldset);
     document.addEventListener("DOMContentLoaded", changeListener);
     document.addEventListener("DOMContentLoaded", init);
+    let address = "https://eia2herrjuli.herokuapp.com";
     function changeListener(_event) {
         let fieldset = document.getElementById("f1");
         fieldset.addEventListener("change", handleChange);
@@ -32,7 +33,7 @@ var Aufgabe5;
         childNodeHTML += "<h3>Christbaumstaender</h3>";
         childNodeHTML += "<select name='Christbaumstaender' id='treeStands'>";
         for (var i = 0; i < Aufgabe5.treeStands.length; i++) {
-            childNodeHTML += "<option value='" + i + Aufgabe5.treeStands[i].typ + " " + Aufgabe5.treeStands[i].price + " Euro'>" + Aufgabe5.treeStands[i].typ + " " + Aufgabe5.treeStands[i].price + " Euro</option>";
+            childNodeHTML += "<option value='" + i + Aufgabe5.treeStands[i].typ + " " + Aufgabe5.treeStands[i].price + " Euro' name='Christbaumstaender'>" + Aufgabe5.treeStands[i].typ + " " + Aufgabe5.treeStands[i].price + " Euro</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
@@ -120,7 +121,6 @@ var Aufgabe5;
                 let value = target.value;
                 let priceIndex = parseInt(value.substr(0, 1));
                 priceService = Aufgabe5.options[priceIndex].price;
-                console.log(priceService);
                 let childNodeHTML;
                 childNodeHTML = "";
                 childNodeHTML += "<a>";
@@ -144,12 +144,10 @@ var Aufgabe5;
     function summarizeTotalPrice() {
         let element = document.getElementById("section");
         let price = 0;
-        console.log(element.childNodes);
         for (var i = 0; i < element.childNodes.length - 1; i++) {
             var article = element.childNodes[i];
             var articlePrice = Number(article.getAttribute("price"));
             price += articlePrice;
-            console.log(articlePrice);
         }
         var HTML;
         var node = document.getElementById("price");
@@ -160,6 +158,7 @@ var Aufgabe5;
     }
     function init(_event) {
         document.getElementById("button").addEventListener("click", checkCheckout);
+        setupAsyncForm();
     }
     function checkCheckout(_event) {
         if (adress == "" || priceTree == 0 || priceService == 0) {
@@ -167,6 +166,53 @@ var Aufgabe5;
         }
         else {
             document.getElementById("missing").innerHTML = "";
+        }
+    }
+    function setupAsyncForm() {
+        let button = document.querySelector("[type=button]");
+        button.addEventListener("click", handleClickOnAsync);
+    }
+    function handleClickOnAsync(_event) {
+        let order = [];
+        let articles = document.getElementsByTagName("input");
+        console.log(articles);
+        let treeoutput = document.getElementById("trees");
+        let color1 = "Ihre Bestellung: " + treeoutput.value.substr(1);
+        sendRequestWithCustomData(color1);
+        order.push(color1);
+        let stand = document.getElementById("treeStands");
+        let color2 = stand.getAttribute("name") + " " + stand.value.substr(1);
+        sendRequestWithCustomData(color2);
+        order.push(color2);
+        for (let i = 0; i < articles.length; i++) {
+            let article = articles[i];
+            if (Number(article.value) > 0) {
+                let color = article.name + " " + article.value + " " + article.title + " " + (Number(article.getAttribute("price")) * Number(article.value)) + " Euro";
+                sendRequestWithCustomData(color);
+                order.push(color);
+            }
+        }
+        let options = document.getElementById("ship");
+        let color3 = options.value.substr(1);
+        sendRequestWithCustomData(color3);
+        order.push(color3);
+        let adress = document.getElementById("ad");
+        let color4 = adress.value;
+        sendRequestWithCustomData(color4);
+        order.push(color4);
+        alert(order);
+    }
+    function sendRequestWithCustomData(_color) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", address + "?color=" + _color, true);
+        xhr.addEventListener("readystatechange", handleStateChange);
+        xhr.send();
+    }
+    function handleStateChange(_event) {
+        var xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
         }
     }
 })(Aufgabe5 || (Aufgabe5 = {}));

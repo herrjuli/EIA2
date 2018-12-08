@@ -36,7 +36,7 @@ namespace L06_SendData {
         // setzt "content-type" und "text/html; charset=utf-8" in header
         _response.setHeader("Access-Control-Allow-Origin", "*");
         // setzt Access-Control-Allow-Origin und * in den header.
-        let url: string = _request.url;
+      /*  let url: string = _request.url;
         if (url != "/favicon.ico") {
             let paragraph: string = Url.parse(url).search.substr(1);
             let childNodeHTML: string = "";
@@ -55,7 +55,12 @@ namespace L06_SendData {
                 _response.write(item[i]);
             }
             console.log(item);
-        }
+        }*/
+        let url: Url.Url = Url.parse(_request.url, true);
+        for (let key in url.query)
+            _response.write(key + ":" + url.query[key] + "<br/>");
+        console.log(url.query)
+        
         _response.end();
     }
 }
