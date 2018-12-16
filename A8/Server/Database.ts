@@ -42,7 +42,7 @@ function handleInsert(_e: Mongo.MongoError): void {
 }
 
 // try to fetch all documents from database, then activate callback
-export function search(_callback: Function, _matriculationNumber:string): void {
+export function search(_callback: Function, _matriculationNumber: string): void {
     // cursor points to the retreived set of documents in memory
     var cursor: Mongo.Cursor = students.find();
     // try to convert to array, then activate callback "prepareAnswer"
@@ -55,11 +55,11 @@ export function search(_callback: Function, _matriculationNumber:string): void {
             _callback("Error" + _e);
         else
             // stringify creates a json-string, passed it back to _callback
-           for (let i:number=0;i<studentArray.length;i++){
-               if(studentArray[i].matrikel ==Number(_matriculationNumber)){
-            _callback(JSON.stringify(studentArray[i]));
-                   }
-               }
+            for (let i: number = 0; i < studentArray.length; i++) {
+                if (studentArray[i].matrikel == Number(_matriculationNumber)) {
+                    _callback(JSON.stringify(studentArray[i]));
+                }
+            }
     }
 }
 export function findAll(_callback: Function): void {
@@ -76,5 +76,5 @@ export function findAll(_callback: Function): void {
         else
             // stringify creates a json-string, passed it back to _callback
             _callback(JSON.stringify(studentArray));
-}
     }
+}
