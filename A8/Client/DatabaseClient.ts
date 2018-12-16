@@ -1,3 +1,5 @@
+import * as Mongo from "mongodb";
+
 namespace DatabaseClient {
     window.addEventListener("load", init);
     let serverAddress: string = "https://datenbankeia2.herokuapp.com/";
@@ -9,6 +11,8 @@ namespace DatabaseClient {
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        document.getElementById("matrikelsearch").addEventListener("input", change);
+document.getElementById("buttonsearch").addEventListener("click", search);
     }
 
     function insert(_event: Event): void {
@@ -25,7 +29,29 @@ namespace DatabaseClient {
         let query: string = "command=refresh";
         sendRequest(query, handleFindResponse);
     }
+    function change(_event: Event): void {
+        let target: HTMLInputElement = <HTMLInputElement>_event.target;
+        target.setAttribute("value", target.value)
+        }
+    
 
+    function search(_event: Event): void {
+        let matrikel: number = parseInt(document.getElementById("matrikelsearch").getAttribute("value"));
+        if (matrikel.toString().length > 0) {
+            console.log("test");
+            let xhr: XMLHttpRequest = new XMLHttpRequest();
+            xhr.open("GET", serverAddress + "?command=search&matrikel=" + matrikel, true);
+            xhr.addEventListener("readystatechange", searchMatrikel);
+            xhr.send();
+}
+        }
+           function searchMatrikel(_event: ProgressEvent): void {
+        let output: HTMLElement = document.getElementById("outputSearch");
+        var xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            output.innerHTML = xhr.response;
+}
+               }
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
