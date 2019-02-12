@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+
+@charset "utf-8";
+
+body {
+	background-color: lightblue;
+}
+
+button {
+	color: red;
+	background-color: black;
+}
+
+#anfang {
+	position: absolut;
+	bottom: 1480px;
+}
+
+
+h2 {
+	color:red;
+
+}
