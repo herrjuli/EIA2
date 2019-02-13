@@ -1,6 +1,7 @@
 var Endabgabe;
 (function (Endabgabe) {
     window.addEventListener("load", init);
+    let address = "https://eia2herrjuli.herokuapp.com";
     let fps = 25;
     let all = [];
     let children = [];
@@ -63,7 +64,7 @@ var Endabgabe;
         let sb = new Endabgabe.ThrownSnowball();
         sb.x = _event.clientX;
         sb.y = _event.clientY;
-        sb.r = 50;
+        sb.r = 45;
         thrownSnowballs.push(sb);
     }
     function newChild() {
@@ -216,12 +217,12 @@ var Endabgabe;
         let node = document.getElementsByTagName("body")[0];
         let childNodeHTML;
         childNodeHTML = "<div id=ende><h2>Ende</h2>";
-        childNodeHTML += "<h3>Deine Punktzahl:<input type='text' 'id=textbox'></input></h3></br>";
+        //childNodeHTML += "<h3>Deine Punktzahl:"+score</h3></br>";
         childNodeHTML += "Wenn du dein Ergebnis speichern moechtest, schreib einfach deinen Namen in die Box und druecke auf 'Senden'.</br>";
         childNodeHTML += "Name:<input type='text' id='textbox'></input></br>";
-        childNodeHTML += "<button type='submit' id='submit'>Senden</button></br>";
+        childNodeHTML += "<button type='submit' id='submit'>Senden</button></br></br>";
         childNodeHTML += "Nochmal spielen";
-        childNodeHTML += "<button id='restart'>Restart</button></div>";
+        childNodeHTML += "<button id='restart'>Neustart</button></div>";
         node.innerHTML = childNodeHTML;
         document.getElementById("restart").addEventListener("click", refresh);
         return;

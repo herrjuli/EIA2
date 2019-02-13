@@ -77,7 +77,7 @@ var Endabgabe;
         }
         draw() {
             if (this.state == "moveDown") {
-                this.drawChildren1();
+                this.drawChildren();
             }
             if (this.state == "dead") {
                 this.drawChildren1();
@@ -86,29 +86,28 @@ var Endabgabe;
         }
         drawChildren() {
             Endabgabe.crc2.strokeStyle = "#e90000";
-            Endabgabe.crc2.fillStyle = "#e90000";
+            Endabgabe.crc2.fillStyle = "black";
             Endabgabe.crc2.lineWidth = 1;
             Endabgabe.crc2.beginPath();
             Endabgabe.crc2.moveTo(this.x, this.y);
             Endabgabe.crc2.arc(this.x, this.y - 5, 5, 45, 360);
             Endabgabe.crc2.lineTo(this.x + 5, this.y);
-            Endabgabe.crc2.lineTo(this.x, this.y + 10);
-            Endabgabe.crc2.lineTo(this.x - 10, this.y);
-            Endabgabe.crc2.lineTo(this.x, this.y - 10);
+            Endabgabe.crc2.lineTo(this.x + 5, this.y + 10);
+            Endabgabe.crc2.lineTo(this.x - 5, this.y + 10);
             Endabgabe.crc2.lineTo(this.x - 5, this.y);
             Endabgabe.crc2.closePath();
             Endabgabe.crc2.fill();
             Endabgabe.crc2.stroke();
         }
         drawChildren1() {
-            Endabgabe.crc2.strokeStyle = "#e90000";
+            Endabgabe.crc2.strokeStyle = "brown";
             Endabgabe.crc2.fillStyle = "brown";
             Endabgabe.crc2.beginPath();
             Endabgabe.crc2.moveTo(this.x, this.y);
             Endabgabe.crc2.lineTo(this.x + 5, this.y);
             Endabgabe.crc2.lineTo(this.x + 5, this.y + 10);
-            Endabgabe.crc2.lineTo(this.x, this.y + 10);
-            Endabgabe.crc2.lineTo(this.x, this.y);
+            Endabgabe.crc2.lineTo(this.x - 5, this.y + 10);
+            Endabgabe.crc2.lineTo(this.x - 5, this.y);
             Endabgabe.crc2.closePath();
             Endabgabe.crc2.fill();
             Endabgabe.crc2.stroke();
@@ -126,8 +125,8 @@ var Endabgabe;
                 Endabgabe.crc2.moveTo(this.x, this.y);
                 Endabgabe.crc2.arc(this.x, this.y, this.r, 45, 360);
                 Endabgabe.crc2.closePath();
-                Endabgabe.crc2.strokeStyle = "blue";
-                Endabgabe.crc2.fillStyle = "blue";
+                Endabgabe.crc2.strokeStyle = "lightblue";
+                Endabgabe.crc2.fillStyle = "lightblue";
                 Endabgabe.crc2.fill();
                 Endabgabe.crc2.stroke();
             }

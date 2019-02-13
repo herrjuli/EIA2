@@ -12,12 +12,11 @@ button {
 }
 
 #anfang {
-	position: absolut;
-	bottom: 1480px;
+	position: absolute;
+	top: 480px;
 }
 
 
 h2 {
 	color:red;
-
 }

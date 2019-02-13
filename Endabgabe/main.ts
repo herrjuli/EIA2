@@ -1,11 +1,11 @@
 namespace Endabgabe {
     window.addEventListener("load", init);
-
+    let address: string = "https://eia2herrjuli.herokuapp.com";
     export let crc2: CanvasRenderingContext2D;
     let fps: number = 25;
     let all: Overclass[] = [];
     let children: Children[] = [];
-    let score:number=0;
+    let score: number = 0;
     let image: ImageData;
     let thrownSnowballs: ThrownSnowball[] = [];
 
@@ -27,9 +27,9 @@ namespace Endabgabe {
     }
 
     //Spiel
-  
+
     function play() {
-        
+
         //Bäume
 
         for (let i: number = 0; i < 6; i++) {
@@ -80,7 +80,7 @@ namespace Endabgabe {
         let sb: ThrownSnowball = new ThrownSnowball();
         sb.x = _event.clientX;
         sb.y = _event.clientY;
-        sb.r = 50;
+        sb.r = 45;
         thrownSnowballs.push(sb);
     }
 
@@ -204,7 +204,7 @@ namespace Endabgabe {
     function update(): void {
         window.setTimeout(update, 1000 / fps);
         crc2.putImageData(image, 0, 0);
-        setTimeout (end,60000);
+        setTimeout(end, 60000);
 
         for (let i: number = 0; i < all.length; i++) {
             all[i].move();
@@ -234,7 +234,7 @@ namespace Endabgabe {
                     console.log("x:" + children[i2].x + "y:" + children[i2].y + " i:" + i2);
                     if (SB.hit(children[i2].x, children[i2].y) == true && children[i2].state == "moveDown") {
                         children[i2].state = "dead";
-                        score += children[i2].getSpeed()*2;;
+                        score += children[i2].getSpeed() * 2;;
                         console.log("hit");
                     }
                     else {
@@ -242,28 +242,28 @@ namespace Endabgabe {
                     }
                 }
             }
-            
+
         }
 
     }
     function end(): void {
         document.getElementById("canvas").style.display = "none";
-        let node:HTMLBodyElement=<HTMLBodyElement>document.getElementsByTagName("body")[0];
-        let childNodeHTML : string;
+        let node: HTMLBodyElement = <HTMLBodyElement>document.getElementsByTagName("body")[0];
+        let childNodeHTML: string;
         childNodeHTML = "<div id=ende><h2>Ende</h2>";
-         childNodeHTML += "<h3>Deine Punktzahl:<input type='text' 'id=textbox'></input></h3></br>";
-         childNodeHTML += "Wenn du dein Ergebnis speichern moechtest, schreib einfach deinen Namen in die Box und druecke auf 'Senden'.</br>";
+        //childNodeHTML += "<h3>Deine Punktzahl:"+score</h3></br>";
+        childNodeHTML += "Wenn du dein Ergebnis speichern moechtest, schreib einfach deinen Namen in die Box und druecke auf 'Senden'.</br>";
         childNodeHTML += "Name:<input type='text' id='textbox'></input></br>";
-         childNodeHTML += "<button type='submit' id='submit'>Senden</button></br>";
+        childNodeHTML += "<button type='submit' id='submit'>Senden</button></br></br>";
         childNodeHTML += "Nochmal spielen";
-        childNodeHTML += "<button id='restart'>Restart</button></div>";
+        childNodeHTML += "<button id='restart'>Neustart</button></div>";
         node.innerHTML = childNodeHTML;
-        document.getElementById("restart").addEventListener("click",refresh);
+        document.getElementById("restart").addEventListener("click", refresh);
         return;
-            }
-    function refresh():void{
+    }
+    function refresh(): void {
         window.location.reload();
-        }
+    }
 }
 
 

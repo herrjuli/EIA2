@@ -81,47 +81,46 @@ namespace Endabgabe {
 
     export class Children extends Move {
         state: string;
-        getSpeed(): number{
-          return this.dx+this.dy;
-            }
-        
+        getSpeed(): number {
+            return this.dx + this.dy;
+        }
+
         draw(): void {
             if (this.state == "moveDown") {
-                this.drawChildren1();
+                this.drawChildren();
             }
-            
+
             if (this.state == "dead") {
                 this.drawChildren1();
             }
-            
+
             else { }
         }
-        
+
         drawChildren(): void {
             crc2.strokeStyle = "#e90000";
-            crc2.fillStyle = "#e90000";
+            crc2.fillStyle = "black";
             crc2.lineWidth = 1;
             crc2.beginPath();
             crc2.moveTo(this.x, this.y);
             crc2.arc(this.x, this.y - 5, 5, 45, 360);
             crc2.lineTo(this.x + 5, this.y);
-            crc2.lineTo(this.x, this.y + 10);
-            crc2.lineTo(this.x - 10, this.y);
-            crc2.lineTo(this.x, this.y - 10);
+            crc2.lineTo(this.x + 5, this.y + 10);
+            crc2.lineTo(this.x - 5, this.y + 10);
             crc2.lineTo(this.x - 5, this.y);
             crc2.closePath();
             crc2.fill();
             crc2.stroke();
         }
         drawChildren1(): void {
-            crc2.strokeStyle = "#e90000";
+            crc2.strokeStyle = "brown";
             crc2.fillStyle = "brown";
             crc2.beginPath();
             crc2.moveTo(this.x, this.y);
             crc2.lineTo(this.x + 5, this.y);
             crc2.lineTo(this.x + 5, this.y + 10);
-            crc2.lineTo(this.x , this.y + 10);
-            crc2.lineTo(this.x , this.y);
+            crc2.lineTo(this.x - 5, this.y + 10);
+            crc2.lineTo(this.x - 5, this.y);
             crc2.closePath();
             crc2.fill();
             crc2.stroke();
@@ -131,10 +130,9 @@ namespace Endabgabe {
 
             this.x -= this.dx;
             this.y += this.dy;
-
-
         }
     }
+
     export class ThrownSnowball extends Overclass {
         x: number;
         y: number;
@@ -149,8 +147,8 @@ namespace Endabgabe {
                 crc2.moveTo(this.x, this.y);
                 crc2.arc(this.x, this.y, this.r, 45, 360);
                 crc2.closePath();
-                crc2.strokeStyle = "blue";
-                crc2.fillStyle = "blue";
+                crc2.strokeStyle = "lightblue";
+                crc2.fillStyle = "lightblue";
                 crc2.fill();
                 crc2.stroke();
             }
