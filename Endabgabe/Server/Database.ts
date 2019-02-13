@@ -2,7 +2,7 @@ import * as Mongo from "mongodb";
 console.log("Database starting");
 
 let databaseURL: string = "mongodb://localhost:27017";
-let databaseName: string = "Test";
+let databaseName: string = "eia2";
 let db: Mongo.Db;
 let gamers: Mongo.Collection;
 
@@ -46,18 +46,14 @@ export function search(_callback: Function, _matriculationNumber: string): void 
 
     // toArray-handler receives two standard parameters, an error object and the array
     // implemented as inner function, so _callback is in scope
-    function prepareAnswer(_e: Mongo.MongoError, studentArray: GamerData[]): void {
+    function prepareAnswer(_e: Mongo.MongoError, gamersArray: GamerData[]): void {
         if (_e)
             _callback("Error" + _e);
-        else
-            // stringify creates a json-string, passed it back to _callback
-            for (let i: number = 0; i < studentArray.length; i++) {
-                if (studentArray[i].scoreOfGame == Number(_matriculationNumber)) {
-                    _callback(JSON.stringify(studentArray[i]));
-                }
+
+                
             }
     }
-}
+
 export function findAll(_callback: Function): void {
     // cursor points to the retreived set of documents in memory
     var cursor: Mongo.Cursor = gamers.find();
@@ -66,11 +62,11 @@ export function findAll(_callback: Function): void {
 
     // toArray-handler receives two standard parameters, an error object and the array
     // implemented as inner function, so _callback is in scope
-    function prepareAnswer(_e: Mongo.MongoError, studentArray: GamerData[]): void {
+    function prepareAnswer(_e: Mongo.MongoError, gamersArray: GamerData[]): void {
         if (_e)
             _callback("Error" + _e);
         else
             // stringify creates a json-string, passed it back to _callback
-            _callback(JSON.stringify(studentArray));
+            _callback(JSON.stringify(gamersArray));
     }
 }

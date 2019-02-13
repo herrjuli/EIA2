@@ -5,10 +5,6 @@ var DatabaseClient;
     //let serverAddress: string = "https://<your>.herokuapp.com/";    
     function init(_event) {
         console.log("Init");
-        let insertButton = document.getElementById("insert");
-        let refreshButton = document.getElementById("refresh");
-        insertButton.addEventListener("click", insert);
-        refreshButton.addEventListener("click", refresh);
     }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");
@@ -18,10 +14,12 @@ var DatabaseClient;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
+    DatabaseClient.insert = insert;
     function refresh(_event) {
         let query = "command=refresh";
         sendRequest(query, handleFindResponse);
     }
+    DatabaseClient.refresh = refresh;
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
@@ -34,13 +32,30 @@ var DatabaseClient;
             alert(xhr.response);
         }
     }
+    function playerDataSort(_a, _b) {
+        let returnNumber;
+        if (_a.scoreOfGame > _b.scoreOfGame) {
+            returnNumber = 1;
+        }
+        else if (_a.scoreOfGame < _b.scoreOfGame) {
+            returnNumber = -1;
+        }
+        else {
+            returnNumber = 0;
+        }
+        return returnNumber;
+    }
     function handleFindResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
+            let output = document.getElementById("scores")[0];
+            let scores = [];
             let responseAsJson = JSON.parse(xhr.response);
-            console.log(responseAsJson);
+            responseAsJson.sort(playerDataSort);
+            for (let i = 0; i < responseAsJson.length; i++) {
+                console.log(responseAsJson[i].name);
+                output.innerHTML += "<p>" + responseAsJson[i].name + "|Score:" + responseAsJson[i].scoreOfGame + "<br>";
+            }
         }
     }
 })(DatabaseClient || (DatabaseClient = {}));

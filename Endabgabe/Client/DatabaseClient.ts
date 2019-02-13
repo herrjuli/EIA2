@@ -5,13 +5,10 @@ namespace DatabaseClient {
 
     function init(_event: Event): void {
         console.log("Init");
-        let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
-        let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
-        insertButton.addEventListener("click", insert);
-        refreshButton.addEventListener("click", refresh);
+       
     }
 
-    function insert(_event: Event): void {
+    export function insert(_event: Event): void {
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
         let query: string = "command=insert";
         query += "&name=" + inputs[0].value;
@@ -20,7 +17,7 @@ namespace DatabaseClient {
         sendRequest(query, handleInsertResponse);
     }
 
-    function refresh(_event: Event): void {
+    export function refresh(_event: Event): void {
         let query: string = "command=refresh";
         sendRequest(query, handleFindResponse);
     }
@@ -39,13 +36,32 @@ namespace DatabaseClient {
         }
     }
 
+    function playerDataSort(_a: GamerData, _b: GamerData): number {
+        let returnNumber: number;
+        if (_a.scoreOfGame > _b.scoreOfGame) {
+            returnNumber = 1;
+        }
+        else if (_a.scoreOfGame < _b.scoreOfGame) {
+            returnNumber = -1;
+        }
+        else {
+            returnNumber = 0;
+        }
+        return returnNumber;
+
+    }
+
     function handleFindResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
-            let responseAsJson: JSON = JSON.parse(xhr.response);
-            console.log(responseAsJson);
+            let output: HTMLElement = document.getElementById("scores")[0];
+            let scores: number[] = [];
+            let responseAsJson: GamerData[] = JSON.parse(xhr.response);
+            responseAsJson.sort(playerDataSort);
+            for (let i: number = 0; i < responseAsJson.length; i++) {
+                console.log(responseAsJson[i].name);
+                output.innerHTML += "<p>" + responseAsJson[i].name + "|Score:" + responseAsJson[i].scoreOfGame + "<br>";
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 const Mongo = require("mongodb");
 console.log("Database starting");
 let databaseURL = "mongodb://localhost:27017";
-let databaseName = "Test";
+let databaseName = "eia2";
 let db;
 let gamers;
 // running on heroku?
@@ -40,16 +40,9 @@ function search(_callback, _matriculationNumber) {
     cursor.toArray(prepareAnswer);
     // toArray-handler receives two standard parameters, an error object and the array
     // implemented as inner function, so _callback is in scope
-    function prepareAnswer(_e, studentArray) {
+    function prepareAnswer(_e, gamersArray) {
         if (_e)
             _callback("Error" + _e);
-        else
-            // stringify creates a json-string, passed it back to _callback
-            for (let i = 0; i < studentArray.length; i++) {
-                if (studentArray[i].scoreOfGame == Number(_matriculationNumber)) {
-                    _callback(JSON.stringify(studentArray[i]));
-                }
-            }
     }
 }
 exports.search = search;
@@ -60,12 +53,12 @@ function findAll(_callback) {
     cursor.toArray(prepareAnswer);
     // toArray-handler receives two standard parameters, an error object and the array
     // implemented as inner function, so _callback is in scope
-    function prepareAnswer(_e, studentArray) {
+    function prepareAnswer(_e, gamersArray) {
         if (_e)
             _callback("Error" + _e);
         else
             // stringify creates a json-string, passed it back to _callback
-            _callback(JSON.stringify(studentArray));
+            _callback(JSON.stringify(gamersArray));
     }
 }
 exports.findAll = findAll;

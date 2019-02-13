@@ -12,7 +12,7 @@ namespace Endabgabe {
     function init(_event: Event): void {
         document.getElementById("button").addEventListener("click", play);
         document.getElementById("canvas").style.display = "initial";
-        document.getElementById("ende").style.display = "none";
+       // document.getElementById("ende").style.display = "none";
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", createSB);
         crc2 = canvas.getContext("2d");
@@ -253,13 +253,21 @@ namespace Endabgabe {
     function end(): void {
         document.getElementById("canvas").style.display = "none";
         document.getElementById("anfang").style.display = "none";
-        document.getElementById("ende").style.display="initial";
-        document.getElementById("score").style.display="none";
+        document.getElementById("ende").style.display = "initial";
+        document.getElementById("score").style.display = "none";
         let node: HTMLBodyElement = <HTMLBodyElement>document.getElementsByTagName("body")[0];
         let childNodeHTML: string;
-        childNodeHTML += "<h3 id='abgabe' value='" + score.toString() + "'>Deine Punktzahl:" + score + "</h3></br>";
         node.innerHTML += childNodeHTML;
         document.getElementById("restart").addEventListener("click", refresh);
+        document.getElementById("abgabe").innerHTML = "Score" + score.toString();
+        document.getElementById("abgabe").innerHTML = "Score" + score.toString();
+        document.getElementById("abgabe").setAttribute("value", score.toString());
+        console.log(score);
+        let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
+        let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+        insertButton.addEventListener("click", DatabaseClient.insert);
+        refreshButton.addEventListener("click", DatabaseClient.refresh);
+
         return;
     }
     function refresh(): void {

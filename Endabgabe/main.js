@@ -11,7 +11,7 @@ var Endabgabe;
     function init(_event) {
         document.getElementById("button").addEventListener("click", play);
         document.getElementById("canvas").style.display = "initial";
-        document.getElementById("ende").style.display = "none";
+        // document.getElementById("ende").style.display = "none";
         let canvas = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", createSB);
         Endabgabe.crc2 = canvas.getContext("2d");
@@ -223,9 +223,16 @@ var Endabgabe;
         document.getElementById("score").style.display = "none";
         let node = document.getElementsByTagName("body")[0];
         let childNodeHTML;
-        childNodeHTML += "<h3 id='abgabe' value='" + score.toString() + "'>Deine Punktzahl:" + score + "</h3></br>";
         node.innerHTML += childNodeHTML;
         document.getElementById("restart").addEventListener("click", refresh);
+        document.getElementById("abgabe").innerHTML = "Score" + score.toString();
+        document.getElementById("abgabe").innerHTML = "Score" + score.toString();
+        document.getElementById("abgabe").setAttribute("value", score.toString());
+        console.log(score);
+        let insertButton = document.getElementById("insert");
+        let refreshButton = document.getElementById("refresh");
+        insertButton.addEventListener("click", DatabaseClient.insert);
+        refreshButton.addEventListener("click", DatabaseClient.refresh);
         return;
     }
     function refresh() {
