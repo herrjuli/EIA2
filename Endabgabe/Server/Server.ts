@@ -1,8 +1,3 @@
-/**
- * Simple server managing between client and database
- * @author: Jirka Dell'Oro-Friedl
- */
-
 import * as Http from "http";
 import * as Url from "url";
 import * as Database from "./Database";
@@ -32,21 +27,20 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 
     switch (command) {
         case "insert":
-            let student: StudentData = {
+            let gamer: GamerData = {
                 name: query["name"],
-                firstname: query["firstname"],
-                matrikel: parseInt(query["matrikel"])
+                scoreOfGame: parseInt(query["scoreOfGame"])
             };
-            Database.insert(student);
+            Database.insert(gamer);
             respond(_response, "storing data");
             break;
         case "refresh":
             Database.findAll(findCallback);
             break;
-        case "search":
+     /*   case "search":
             console.log(query["matrikel"]);
             Database.search(findCallback, query["matrikel"]);
-            break;
+            break;*/
         default:
             respond(_response, "unknown command: " + command);
             break;

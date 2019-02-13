@@ -1,14 +1,10 @@
-/**
- * Simple database insertion and query for MongoDB
- * @author: Jirka Dell'Oro-Friedl
- */
 import * as Mongo from "mongodb";
 console.log("Database starting");
 
 let databaseURL: string = "mongodb://localhost:27017";
 let databaseName: string = "Test";
 let db: Mongo.Db;
-let students: Mongo.Collection;
+let gamers: Mongo.Collection;
 
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
@@ -27,13 +23,13 @@ function handleConnect(_e: Mongo.MongoError, _db: Mongo.Db): void {
     else {
         console.log("Connected to database!");
         db = _db.db(databaseName);
-        students = db.collection("students");
+        gamers = db.collection("Punkte");
     }
 }
 
-export function insert(_doc: StudentData): void {
+export function insert(_doc: GamerData): void {
     // try insertion then activate callback "handleInsert"
-    students.insertOne(_doc, handleInsert);
+    gamers.insertOne(_doc, handleInsert);
 }
 
 // insertion-handler receives an error object as standard parameter
@@ -44,19 +40,19 @@ function handleInsert(_e: Mongo.MongoError): void {
 // try to fetch all documents from database, then activate callback
 export function search(_callback: Function, _matriculationNumber: string): void {
     // cursor points to the retreived set of documents in memory
-    var cursor: Mongo.Cursor = students.find();
+    var cursor: Mongo.Cursor = gamers.find();
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
 
     // toArray-handler receives two standard parameters, an error object and the array
     // implemented as inner function, so _callback is in scope
-    function prepareAnswer(_e: Mongo.MongoError, studentArray: StudentData[]): void {
+    function prepareAnswer(_e: Mongo.MongoError, studentArray: GamerData[]): void {
         if (_e)
             _callback("Error" + _e);
         else
             // stringify creates a json-string, passed it back to _callback
             for (let i: number = 0; i < studentArray.length; i++) {
-                if (studentArray[i].matrikel == Number(_matriculationNumber)) {
+                if (studentArray[i].scoreOfGame == Number(_matriculationNumber)) {
                     _callback(JSON.stringify(studentArray[i]));
                 }
             }
@@ -64,13 +60,13 @@ export function search(_callback: Function, _matriculationNumber: string): void 
 }
 export function findAll(_callback: Function): void {
     // cursor points to the retreived set of documents in memory
-    var cursor: Mongo.Cursor = students.find();
+    var cursor: Mongo.Cursor = gamers.find();
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
 
     // toArray-handler receives two standard parameters, an error object and the array
     // implemented as inner function, so _callback is in scope
-    function prepareAnswer(_e: Mongo.MongoError, studentArray: StudentData[]): void {
+    function prepareAnswer(_e: Mongo.MongoError, studentArray: GamerData[]): void {
         if (_e)
             _callback("Error" + _e);
         else

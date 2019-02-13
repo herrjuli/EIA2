@@ -10,6 +10,8 @@ var Endabgabe;
     let thrownSnowballs = [];
     function init(_event) {
         document.getElementById("button").addEventListener("click", play);
+        document.getElementById("canvas").style.display = "initial";
+        document.getElementById("ende").style.display = "none";
         let canvas = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", createSB);
         Endabgabe.crc2 = canvas.getContext("2d");
@@ -24,6 +26,7 @@ var Endabgabe;
     }
     //Spiel
     function play() {
+        setTimeout(end, 6000);
         //B�ume
         for (let i = 0; i < 6; i++) {
             let tree = new Endabgabe.Tree();
@@ -171,42 +174,43 @@ var Endabgabe;
         Endabgabe.crc2.stroke();
     }
     function update() {
-        window.setTimeout(update, 1000 / fps);
-        Endabgabe.crc2.putImageData(image, 0, 0);
-        setTimeout(end, 60000);
-        for (let i = 0; i < all.length; i++) {
-            all[i].move();
-            all[i].draw();
-        }
-        for (let i = 0; i < children.length; i++) {
-            if (children[i].x > Endabgabe.crc2.canvas.width || children[i].x < 0 || children[i].y > Endabgabe.crc2.canvas.height) {
-                children.splice(i, 1);
-                newChild();
+        if (document.getElementById("canvas").getAttribute("style") != "display: none;") {
+            window.setTimeout(update, 1000 / fps);
+            Endabgabe.crc2.putImageData(image, 0, 0);
+            document.getElementById("score").innerHTML = "Punktzahl:" + score.toString() + "";
+            for (let i = 0; i < all.length; i++) {
+                all[i].move();
+                all[i].draw();
             }
-            else {
-                children[i].move();
-                children[i].draw();
+            for (let i = 0; i < children.length; i++) {
+                if (children[i].x > Endabgabe.crc2.canvas.width || children[i].x < 0 || children[i].y > Endabgabe.crc2.canvas.height) {
+                    children.splice(i, 1);
+                    newChild();
+                }
+                else {
+                    children[i].move();
+                    children[i].draw();
+                }
             }
-        }
-        for (let i = 0; i < thrownSnowballs.length; i++) {
-            let SB = thrownSnowballs[i];
-            if (SB.r > 0) {
-                SB.move();
-                SB.draw();
-            }
-            if (SB.r == 0) {
-                SB.move();
-                console.log(SB.r);
-                for (let i2 = 0; i2 < children.length; i2++) {
-                    console.log("x:" + children[i2].x + "y:" + children[i2].y + " i:" + i2);
-                    if (SB.hit(children[i2].x, children[i2].y) == true && children[i2].state == "moveDown") {
-                        children[i2].state = "dead";
-                        score += children[i2].getSpeed() * 2;
-                        ;
-                        console.log("hit");
-                    }
-                    else {
-                        console.log("else");
+            for (let i = 0; i < thrownSnowballs.length; i++) {
+                let SB = thrownSnowballs[i];
+                if (SB.r > 0) {
+                    SB.move();
+                    SB.draw();
+                }
+                if (SB.r == -1) {
+                    SB.move();
+                    console.log(SB.r);
+                    for (let i2 = 0; i2 < children.length; i2++) {
+                        console.log("x:" + children[i2].x + "y:" + children[i2].y + " i:" + i2);
+                        if (SB.hit(children[i2].x, children[i2].y) == true && children[i2].state == "moveDown") {
+                            children[i2].state = "dead";
+                            score += Math.floor(children[i2].getSpeed() * 4);
+                            console.log("hit");
+                        }
+                        else {
+                            console.log("else");
+                        }
                     }
                 }
             }
@@ -214,16 +218,13 @@ var Endabgabe;
     }
     function end() {
         document.getElementById("canvas").style.display = "none";
+        document.getElementById("anfang").style.display = "none";
+        document.getElementById("ende").style.display = "initial";
+        document.getElementById("score").style.display = "none";
         let node = document.getElementsByTagName("body")[0];
         let childNodeHTML;
-        childNodeHTML = "<div id=ende><h2>Ende</h2>";
-        //childNodeHTML += "<h3>Deine Punktzahl:"+score</h3></br>";
-        childNodeHTML += "Wenn du dein Ergebnis speichern moechtest, schreib einfach deinen Namen in die Box und druecke auf 'Senden'.</br>";
-        childNodeHTML += "Name:<input type='text' id='textbox'></input></br>";
-        childNodeHTML += "<button type='submit' id='submit'>Senden</button></br></br>";
-        childNodeHTML += "Nochmal spielen";
-        childNodeHTML += "<button id='restart'>Neustart</button></div>";
-        node.innerHTML = childNodeHTML;
+        childNodeHTML += "<h3 id='abgabe' value='" + score.toString() + "'>Deine Punktzahl:" + score + "</h3></br>";
+        node.innerHTML += childNodeHTML;
         document.getElementById("restart").addEventListener("click", refresh);
         return;
     }

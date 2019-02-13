@@ -1,14 +1,10 @@
 "use strict";
-/**
- * Simple database insertion and query for MongoDB
- * @author: Jirka Dell'Oro-Friedl
- */
 const Mongo = require("mongodb");
 console.log("Database starting");
 let databaseURL = "mongodb://localhost:27017";
 let databaseName = "Test";
 let db;
-let students;
+let gamers;
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
     //    databaseURL = "mongodb://username:password@hostname:port/database";
@@ -24,12 +20,12 @@ function handleConnect(_e, _db) {
     else {
         console.log("Connected to database!");
         db = _db.db(databaseName);
-        students = db.collection("students");
+        gamers = db.collection("Punkte");
     }
 }
 function insert(_doc) {
     // try insertion then activate callback "handleInsert"
-    students.insertOne(_doc, handleInsert);
+    gamers.insertOne(_doc, handleInsert);
 }
 exports.insert = insert;
 // insertion-handler receives an error object as standard parameter
@@ -39,7 +35,7 @@ function handleInsert(_e) {
 // try to fetch all documents from database, then activate callback
 function search(_callback, _matriculationNumber) {
     // cursor points to the retreived set of documents in memory
-    var cursor = students.find();
+    var cursor = gamers.find();
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
     // toArray-handler receives two standard parameters, an error object and the array
@@ -50,7 +46,7 @@ function search(_callback, _matriculationNumber) {
         else
             // stringify creates a json-string, passed it back to _callback
             for (let i = 0; i < studentArray.length; i++) {
-                if (studentArray[i].matrikel == Number(_matriculationNumber)) {
+                if (studentArray[i].scoreOfGame == Number(_matriculationNumber)) {
                     _callback(JSON.stringify(studentArray[i]));
                 }
             }
@@ -59,7 +55,7 @@ function search(_callback, _matriculationNumber) {
 exports.search = search;
 function findAll(_callback) {
     // cursor points to the retreived set of documents in memory
-    var cursor = students.find();
+    var cursor = gamers.find();
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
     // toArray-handler receives two standard parameters, an error object and the array

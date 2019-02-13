@@ -98,8 +98,8 @@ namespace Endabgabe {
         }
 
         drawChildren(): void {
-            crc2.strokeStyle = "#e90000";
-            crc2.fillStyle = "black";
+            crc2.strokeStyle = "#lightblue";
+            crc2.fillStyle = "lightblue";
             crc2.lineWidth = 1;
             crc2.beginPath();
             crc2.moveTo(this.x, this.y);

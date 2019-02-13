@@ -12,12 +12,13 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 <head>
 <title>EA</title>
 <meta charset="utf-8" />
-<!-- <form action="https://eia2herrjuli.herokuapp.com" method="get"> -->
 <script src="main.js" type="text/javascript" charset="utf-8"></script>
 <script src="Daten.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="Endabgabe.css">
+<script src="Client/DatabaseClient.js" type="text/javascript" charset="utf-8"></script>
  </head>
 <body>
+<div id="score"></div>
 <div id="anfang">
 <h1>Der Rodelhang-Terminator</h1>
 		<p>
@@ -30,5 +31,14 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 		
 	<canvas id="canvas" width=320 height=460></canvas>
 		<!--<button type="button" id="button">Start</button>  -->
+		<div id=ende><h2>Ende</h2>
+		<p>Wenn du dein Ergebnis speichern möchtest, schreib einfach deinen Namen in die Box und drücke auf "Senden".</p>
+	    Name:<input type="text" id="textbox"></input>
+		<button type="submit" id="insert">Senden</button>
+		<p>Nochmal spielen</p>
+		<button id="restart">Neustart</button>
+		<button id="refresh">Highscore</button>
+		</div>
+
 </body>
 </html>

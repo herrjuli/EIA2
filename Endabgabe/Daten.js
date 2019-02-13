@@ -85,8 +85,8 @@ var Endabgabe;
             else { }
         }
         drawChildren() {
-            Endabgabe.crc2.strokeStyle = "#e90000";
-            Endabgabe.crc2.fillStyle = "black";
+            Endabgabe.crc2.strokeStyle = "#lightblue";
+            Endabgabe.crc2.fillStyle = "lightblue";
             Endabgabe.crc2.lineWidth = 1;
             Endabgabe.crc2.beginPath();
             Endabgabe.crc2.moveTo(this.x, this.y);

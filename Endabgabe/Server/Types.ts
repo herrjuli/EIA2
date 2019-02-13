@@ -2,8 +2,7 @@ interface AssocStringString {
     [key: string]: string;
 }
 
-interface StudentData {
+interface GamerData {
     name: string;
-    firstname: string;
-    matrikel: number;
+    scoreOfGame: number;
 }
