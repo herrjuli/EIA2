@@ -145,7 +145,7 @@ namespace Aufgabe4 {
         }
 
         if (target.id == "kugeln") {
-            let node: HTMLElement = document.getElementById("ball")
+            let node: HTMLElement = document.getElementById("christmasOrnaments")
             let value: string = target.value;
             let priceIndex: number = parseInt(value.substr(0, 1));
             priceChristmasOrnaments = christmasOrnaments[priceIndex].price

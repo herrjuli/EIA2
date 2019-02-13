@@ -95,135 +95,135 @@ var Aufgabe4;
         node.innerHTML += childNodeHTML;
     }
     function handleChange(_event) {
-        var target = _event.target;
+        let target = _event.target;
         if (target.id == "trees") {
-            var node_1 = document.getElementById("tree");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
+            let node = document.getElementById("tree");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
             priceTree = Aufgabe4.trees[priceIndex].price;
-            var childNodeHTML_1;
-            childNodeHTML_1 = "";
-            childNodeHTML_1 += "<a>";
-            childNodeHTML_1 += " " + value.substr(1);
-            childNodeHTML_1 += "</a>";
-            node_1.innerHTML = childNodeHTML_1;
+            let childNodeHTML;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + value.substr(1);
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
         }
         if (target.name == "Radiogroup") {
-            var node_2 = document.getElementById("holder");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
+            let node = document.getElementById("holder");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
             priceTreeStands = Aufgabe4.treeStands[priceIndex].price;
             console.log(priceTreeStands);
-            var childNodeHTML_2;
-            childNodeHTML_2 = "";
-            childNodeHTML_2 += "<a>";
-            childNodeHTML_2 += " " + value.substr(1);
-            childNodeHTML_2 += "</a>";
-            node_2.innerHTML = childNodeHTML_2;
+            let childNodeHTML;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + value.substr(1);
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "kugeln") {
-            var node_3 = document.getElementById("ball");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
+            let node = document.getElementById("christmasOrnaments");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
             priceChristmasOrnaments = Aufgabe4.christmasOrnaments[priceIndex].price;
             console.log(priceChristmasOrnaments);
-            var childNodeHTML_3;
-            childNodeHTML_3 = "";
-            childNodeHTML_3 += "<a>";
-            childNodeHTML_3 += " " + value.substr(1);
-            childNodeHTML_3 += "</a>";
-            node_3.innerHTML = childNodeHTML_3;
+            let childNodeHTML;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + value.substr(1);
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "Menge1") {
-            var node_4 = document.getElementById("ballMenge");
-            var value = target.value;
-            var numIndex = parseInt(value.substr(1, 2));
+            let node = document.getElementById("ballMenge");
+            let value = target.value;
+            let numIndex = parseInt(value.substr(1, 2));
             numberOfChristmasOrnaments = numIndex;
             console.log(numberOfChristmasOrnaments);
-            var childNodeHTML_4;
-            childNodeHTML_4 = "";
-            childNodeHTML_4 += "<a>";
-            childNodeHTML_4 += " " + target.value;
-            childNodeHTML_4 += "</a>";
-            node_4.innerHTML = childNodeHTML_4;
+            let childNodeHTML;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "lametten") {
-            var node_5 = document.getElementById("lametta");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
+            let node = document.getElementById("lametta");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
             priceTinsel = Aufgabe4.tinsel[priceIndex].price;
             console.log(priceTinsel);
-            var childNodeHTML_5;
-            childNodeHTML_5 = "";
-            childNodeHTML_5 += "<a>";
-            childNodeHTML_5 += " " + value.substr(1);
-            childNodeHTML_5 += "</a>";
-            node_5.innerHTML = childNodeHTML_5;
+            let childNodeHTML;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + value.substr(1);
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "Menge2") {
-            var node_6 = document.getElementById("lamettaMenge");
-            var value = target.value;
-            var numIndex = parseInt(value.substr(1, 2));
+            let node = document.getElementById("lamettaMenge");
+            let value = target.value;
+            let numIndex = parseInt(value.substr(1, 2));
             numberOfTinsel = numIndex;
             console.log(numberOfTinsel);
-            var childNodeHTML_6;
-            childNodeHTML_6 = "";
-            childNodeHTML_6 += "<a>";
-            childNodeHTML_6 += " " + target.value;
-            childNodeHTML_6 += "</a>";
-            node_6.innerHTML = childNodeHTML_6;
+            let childNodeHTML;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "candles") {
-            var node_7 = document.getElementById("candle");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
+            let node = document.getElementById("candle");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
             priceCandles = Aufgabe4.candles[priceIndex].price;
             console.log(priceCandles);
-            var childNodeHTML_7;
-            childNodeHTML_7 = "";
-            childNodeHTML_7 += "<a>";
-            childNodeHTML_7 += " " + value.substr(1);
-            childNodeHTML_7 += "</a>";
-            node_7.innerHTML = childNodeHTML_7;
+            let childNodeHTML;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + value.substr(1);
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "Menge3") {
-            var node_8 = document.getElementById("candleMenge");
-            var value = target.value;
-            var numIndex = parseInt(value.substr(1, 2));
+            let node = document.getElementById("candleMenge");
+            let value = target.value;
+            let numIndex = parseInt(value.substr(1, 2));
             numberOfCandles = numIndex;
             console.log(numberOfCandles);
-            var childNodeHTML_8;
-            childNodeHTML_8 = "";
-            childNodeHTML_8 += "<a>";
-            childNodeHTML_8 += " " + target.value;
-            childNodeHTML_8 += "</a>";
-            node_8.innerHTML = childNodeHTML_8;
+            let childNodeHTML;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "ship") {
-            var node_9 = document.getElementById("shipping");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
+            let node = document.getElementById("shipping");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
             priceService = Aufgabe4.options[priceIndex].price;
             console.log(priceService);
-            var childNodeHTML_9;
-            childNodeHTML_9 = "";
-            childNodeHTML_9 += "<a>";
-            childNodeHTML_9 += " " + value.substr(1);
-            childNodeHTML_9 += "</a>";
-            node_9.innerHTML = childNodeHTML_9;
+            let childNodeHTML;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + value.substr(1);
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "ad") {
-            var node_10 = document.getElementById("adress");
+            let node = document.getElementById("adress");
             adress = target.value;
-            var childNodeHTML_10;
-            childNodeHTML_10 = "";
-            childNodeHTML_10 += "<a>";
-            childNodeHTML_10 += " " + target.value;
-            childNodeHTML_10 += "</a>";
-            node_10.innerHTML = childNodeHTML_10;
+            let childNodeHTML;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
         }
-        var node = document.getElementById("price");
-        var childNodeHTML;
+        let node = document.getElementById("price");
+        let childNodeHTML;
         childNodeHTML = "";
         childNodeHTML += "<a>";
         childNodeHTML += (priceTree + priceTreeStands + (priceChristmasOrnaments * numberOfChristmasOrnaments) + (priceTinsel * numberOfTinsel) + (priceCandles * numberOfCandles) + priceService);

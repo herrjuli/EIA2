@@ -27,17 +27,6 @@ var Aufgabe10;
             Aufgabe10.crc2.fill();
             Aufgabe10.crc2.stroke();
         }
-        /*   move(): void {
-                  if (this.y > 400) {
-                    this.y = 0;
-                    this.x = 0;
-                }
-    
-                this.x += - 4;
-                this.y += 2;
-                this.draw();
-               
-    */
         move() {
             this.dy += 2;
             this.y = 110;
