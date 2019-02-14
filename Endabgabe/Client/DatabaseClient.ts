@@ -26,6 +26,7 @@ namespace DatabaseClient {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
+//        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         xhr.send();
     }
 
@@ -39,10 +40,10 @@ namespace DatabaseClient {
     function playerDataSort(_a: GamerData, _b: GamerData): number {
         let returnNumber: number;
         if (_a.scoreOfGame > _b.scoreOfGame) {
-            returnNumber = 1;
+            returnNumber = -1;
         }
         else if (_a.scoreOfGame < _b.scoreOfGame) {
-            returnNumber = -1;
+            returnNumber = 1;
         }
         else {
             returnNumber = 0;
@@ -54,10 +55,11 @@ namespace DatabaseClient {
     function handleFindResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output: HTMLElement = document.getElementById("scores")[0];
+            let output: HTMLElement = document.getElementById("scores");
             let scores: number[] = [];
             let responseAsJson: GamerData[] = JSON.parse(xhr.response);
             responseAsJson.sort(playerDataSort);
+            console.log(responseAsJson);
             for (let i: number = 0; i < responseAsJson.length; i++) {
                 console.log(responseAsJson[i].name);
                 output.innerHTML += "<p>" + responseAsJson[i].name + "|Score:" + responseAsJson[i].scoreOfGame + "<br>";

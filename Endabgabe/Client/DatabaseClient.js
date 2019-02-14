@@ -24,6 +24,7 @@ var DatabaseClient;
         let xhr = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
+        //        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         xhr.send();
     }
     function handleInsertResponse(_event) {
@@ -35,10 +36,10 @@ var DatabaseClient;
     function playerDataSort(_a, _b) {
         let returnNumber;
         if (_a.scoreOfGame > _b.scoreOfGame) {
-            returnNumber = 1;
+            returnNumber = -1;
         }
         else if (_a.scoreOfGame < _b.scoreOfGame) {
-            returnNumber = -1;
+            returnNumber = 1;
         }
         else {
             returnNumber = 0;
@@ -48,10 +49,11 @@ var DatabaseClient;
     function handleFindResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output = document.getElementById("scores")[0];
+            let output = document.getElementById("scores");
             let scores = [];
             let responseAsJson = JSON.parse(xhr.response);
             responseAsJson.sort(playerDataSort);
+            console.log(responseAsJson);
             for (let i = 0; i < responseAsJson.length; i++) {
                 console.log(responseAsJson[i].name);
                 output.innerHTML += "<p>" + responseAsJson[i].name + "|Score:" + responseAsJson[i].scoreOfGame + "<br>";

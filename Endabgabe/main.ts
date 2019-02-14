@@ -12,7 +12,7 @@ namespace Endabgabe {
     function init(_event: Event): void {
         document.getElementById("button").addEventListener("click", play);
         document.getElementById("canvas").style.display = "initial";
-       // document.getElementById("ende").style.display = "none";
+        document.getElementById("ende").style.display = "none";
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", createSB);
         crc2 = canvas.getContext("2d");
@@ -23,6 +23,32 @@ namespace Endabgabe {
         drawClouds1();
         drawClouds2();
         drawClouds3();
+        for (let i: number = 0; i < 6; i++) {
+            let tree: Tree = new Tree();
+            crc2.beginPath();
+            crc2.moveTo(0, 115);
+            crc2.lineTo(crc2.canvas.width, 115);
+            crc2.lineTo(crc2.canvas.width, crc2.canvas.height);
+            crc2.lineTo(0, crc2.canvas.height);
+            crc2.lineWidth = 2;
+            crc2.closePath();
+
+            tree.x = Math.random() * crc2.canvas.width;
+            tree.y = Math.random() * crc2.canvas.height;
+            if (crc2.isPointInPath(tree.x, tree.y)) {
+                crc2.beginPath();
+                crc2.moveTo(0, 110);
+                crc2.lineTo(320, 110);
+                crc2.lineTo(320, 460);
+                crc2.lineTo(0, 460);
+                crc2.lineTo(0, 110);
+                crc2.closePath();
+                tree.draw();
+            }
+            else {
+                i--;
+            }
+        }
         image = crc2.getImageData(0, 0, 320, 460);
     }
 
@@ -32,25 +58,7 @@ namespace Endabgabe {
         setTimeout(end, 6000);
         //Bäume
 
-        for (let i: number = 0; i < 6; i++) {
-            let tree: Tree = new Tree();
-            tree.x = Math.random() * crc2.canvas.width;
-            tree.y = Math.random() * crc2.canvas.height;
-            crc2.beginPath();
-            crc2.moveTo(0, 110);
-            crc2.lineTo(320, 110);
-            crc2.lineTo(320, 460);
-            crc2.lineTo(0, 460);
-            crc2.lineTo(0, 110);
-            crc2.closePath();
-            if (crc2.isPointInPath(tree.x, tree.y)) {
-                all.push(tree);
-            }
 
-            else {
-                i--;
-            }
-        }
 
         //Schneeflocken
 
@@ -214,14 +222,15 @@ namespace Endabgabe {
             }
 
             for (let i: number = 0; i < children.length; i++) {
-                if (children[i].x > crc2.canvas.width || children[i].x < 0 || children[i].y > crc2.canvas.height) {
-                    children.splice(i, 1);
-                    newChild();
+                if (children[i].state == "dead") {
+                    if (children[i].x > crc2.canvas.width || children[i].x < 0 || children[i].y > crc2.canvas.height) {
+                        console.log("x:" + children[i].x + "y:" + children[i].y);
+                        children.splice(i, 1);
+                        newChild();
+                    }
                 }
-                else {
-                    children[i].move();
-                    children[i].draw();
-                }
+                children[i].move();
+                children[i].draw();
             }
             for (let i: number = 0; i < thrownSnowballs.length; i++) {
                 let SB: ThrownSnowball = thrownSnowballs[i];
@@ -234,15 +243,15 @@ namespace Endabgabe {
                     SB.move();
                     console.log(SB.r);
                     for (let i2: number = 0; i2 < children.length; i2++) {
-                        console.log("x:" + children[i2].x + "y:" + children[i2].y + " i:" + i2);
-                        if (SB.hit(children[i2].x, children[i2].y) == true && children[i2].state == "moveDown") {
+                        if (SB.hitChildDown(children[i2].x, children[i2].y) == true && children[i2].state == "moveDown") {
                             children[i2].state = "dead";
-                            score += Math.floor(children[i2].getSpeed() * 4);
-
+                            score += Math.floor(children[i2].getSpeed() * 40);
                             console.log("hit");
                         }
-                        else {
-                            console.log("else");
+                        if (SB.hitChildUp(children[i2].x, children[i2].y) == true && children[i2].state == "up") {
+                            children[i2].state = "dead";
+                            score += Math.floor(children[i2].getSpeed() * 40);
+                            console.log("hit");
                         }
                     }
                 }

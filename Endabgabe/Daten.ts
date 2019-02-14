@@ -82,7 +82,7 @@ namespace Endabgabe {
     export class Children extends Move {
         state: string;
         getSpeed(): number {
-            return this.dx + this.dy;
+            return Math.abs(this.dx + this.dy);
         }
 
         draw(): void {
@@ -94,6 +94,9 @@ namespace Endabgabe {
                 this.drawChildren1();
             }
 
+            if (this.state == "up") {
+                this.drawChildren2();
+            }
             else { }
         }
 
@@ -113,8 +116,9 @@ namespace Endabgabe {
             crc2.stroke();
         }
         drawChildren1(): void {
-            crc2.strokeStyle = "brown";
+            crc2.strokeStyle = "lightblue";
             crc2.fillStyle = "brown";
+            crc2.lineWidth = 1;
             crc2.beginPath();
             crc2.moveTo(this.x, this.y);
             crc2.lineTo(this.x + 5, this.y);
@@ -125,11 +129,42 @@ namespace Endabgabe {
             crc2.fill();
             crc2.stroke();
         }
+        drawChildren2(): void {
+            crc2.strokeStyle = "#lightblue";
+            crc2.fillStyle = "lightblue";
+            crc2.lineWidth = 1;
+            crc2.beginPath();
+            crc2.moveTo(this.x - 20, this.y + 10);
+            crc2.arc(this.x - 20, this.y + 10 - 5, 5, 45, 360);
+            crc2.moveTo(this.x - 20, this.y + 5);
+            crc2.lineTo(this.x + 5, this.y);
+            crc2.lineTo(this.x + 5, this.y + 10);
+            crc2.lineTo(this.x - 5, this.y + 10);
+            crc2.lineTo(this.x - 5, this.y);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+        }
+
         move(): void {
+            if (this.x > crc2.canvas.width + 5 || this.x < -5) {
+                this.state = "up";
+            }
+            if (this.y > crc2.canvas.height + 5) {
+                this.state = "up";
+            }
+            if (this.y <= 102) {
+                this.state = "moveDown";
+            }
 
-
-            this.x -= this.dx;
-            this.y += this.dy;
+            if (this.state == "moveDown" || this.state == "dead") {
+                this.x -= this.dx;
+                this.y += this.dy;
+            }
+            if (this.state == "up") {
+                this.x += this.dx;
+                this.y -= this.dy;
+            }
         }
     }
 
@@ -143,7 +178,7 @@ namespace Endabgabe {
             if (this.r > 0) {
 
                 crc2.beginPath;
-
+                crc2.lineWidth = 1;
                 crc2.moveTo(this.x, this.y);
                 crc2.arc(this.x, this.y, this.r, 45, 360);
                 crc2.closePath();
@@ -158,11 +193,12 @@ namespace Endabgabe {
             this.r -= 2;
         }
 
-        hit(_x: number, _y: number): boolean {
+        hitChildDown(_x: number, _y: number): boolean {
             crc2.lineWidth = 50;
             crc2.beginPath();
             crc2.moveTo(_x, _y);
             crc2.arc(_x, _y - 5, 20, 45, 360);
+            crc2.lineWidth = 0;
             if (crc2.isPointInPath(this.x, this.y) == true) {
                 return true;
             }
@@ -170,5 +206,28 @@ namespace Endabgabe {
                 return false;
             }
         }
+        
+        hitChildUp(_x: number, _y: number): boolean {
+            crc2.lineWidth = 50;
+            crc2.beginPath();
+            crc2.moveTo(_x - 20, _y + 10);
+            crc2.arc(_x - 20, _y + 10 - 5, 5, 45, 360);
+            crc2.moveTo(_x - 20, _y + 5);
+            crc2.lineTo(_x + 5, _y);
+            crc2.lineTo(_x + 5, _y + 10);
+            crc2.lineTo(_x - 5, _y + 10);
+            crc2.lineTo(_x - 5, _y);
+            crc2.closePath();
+            crc2.lineWidth = 0;
+            if (crc2.isPointInPath(this.x, this.y) == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        
+        
+                    
     }
 }

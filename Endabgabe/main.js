@@ -11,7 +11,7 @@ var Endabgabe;
     function init(_event) {
         document.getElementById("button").addEventListener("click", play);
         document.getElementById("canvas").style.display = "initial";
-        // document.getElementById("ende").style.display = "none";
+        document.getElementById("ende").style.display = "none";
         let canvas = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", createSB);
         Endabgabe.crc2 = canvas.getContext("2d");
@@ -22,30 +22,37 @@ var Endabgabe;
         drawClouds1();
         drawClouds2();
         drawClouds3();
+        for (let i = 0; i < 6; i++) {
+            let tree = new Endabgabe.Tree();
+            Endabgabe.crc2.beginPath();
+            Endabgabe.crc2.moveTo(0, 115);
+            Endabgabe.crc2.lineTo(Endabgabe.crc2.canvas.width, 115);
+            Endabgabe.crc2.lineTo(Endabgabe.crc2.canvas.width, Endabgabe.crc2.canvas.height);
+            Endabgabe.crc2.lineTo(0, Endabgabe.crc2.canvas.height);
+            Endabgabe.crc2.lineWidth = 2;
+            Endabgabe.crc2.closePath();
+            tree.x = Math.random() * Endabgabe.crc2.canvas.width;
+            tree.y = Math.random() * Endabgabe.crc2.canvas.height;
+            if (Endabgabe.crc2.isPointInPath(tree.x, tree.y)) {
+                Endabgabe.crc2.beginPath();
+                Endabgabe.crc2.moveTo(0, 110);
+                Endabgabe.crc2.lineTo(320, 110);
+                Endabgabe.crc2.lineTo(320, 460);
+                Endabgabe.crc2.lineTo(0, 460);
+                Endabgabe.crc2.lineTo(0, 110);
+                Endabgabe.crc2.closePath();
+                tree.draw();
+            }
+            else {
+                i--;
+            }
+        }
         image = Endabgabe.crc2.getImageData(0, 0, 320, 460);
     }
     //Spiel
     function play() {
         setTimeout(end, 6000);
         //B�ume
-        for (let i = 0; i < 6; i++) {
-            let tree = new Endabgabe.Tree();
-            tree.x = Math.random() * Endabgabe.crc2.canvas.width;
-            tree.y = Math.random() * Endabgabe.crc2.canvas.height;
-            Endabgabe.crc2.beginPath();
-            Endabgabe.crc2.moveTo(0, 110);
-            Endabgabe.crc2.lineTo(320, 110);
-            Endabgabe.crc2.lineTo(320, 460);
-            Endabgabe.crc2.lineTo(0, 460);
-            Endabgabe.crc2.lineTo(0, 110);
-            Endabgabe.crc2.closePath();
-            if (Endabgabe.crc2.isPointInPath(tree.x, tree.y)) {
-                all.push(tree);
-            }
-            else {
-                i--;
-            }
-        }
         //Schneeflocken
         for (let i = 0; i < 20; i++) {
             let snowflake = new Endabgabe.Snowflakes();
@@ -183,14 +190,15 @@ var Endabgabe;
                 all[i].draw();
             }
             for (let i = 0; i < children.length; i++) {
-                if (children[i].x > Endabgabe.crc2.canvas.width || children[i].x < 0 || children[i].y > Endabgabe.crc2.canvas.height) {
-                    children.splice(i, 1);
-                    newChild();
+                if (children[i].state == "dead") {
+                    if (children[i].x > Endabgabe.crc2.canvas.width || children[i].x < 0 || children[i].y > Endabgabe.crc2.canvas.height) {
+                        console.log("x:" + children[i].x + "y:" + children[i].y);
+                        children.splice(i, 1);
+                        newChild();
+                    }
                 }
-                else {
-                    children[i].move();
-                    children[i].draw();
-                }
+                children[i].move();
+                children[i].draw();
             }
             for (let i = 0; i < thrownSnowballs.length; i++) {
                 let SB = thrownSnowballs[i];
@@ -202,14 +210,15 @@ var Endabgabe;
                     SB.move();
                     console.log(SB.r);
                     for (let i2 = 0; i2 < children.length; i2++) {
-                        console.log("x:" + children[i2].x + "y:" + children[i2].y + " i:" + i2);
-                        if (SB.hit(children[i2].x, children[i2].y) == true && children[i2].state == "moveDown") {
+                        if (SB.hitChildDown(children[i2].x, children[i2].y) == true && children[i2].state == "moveDown") {
                             children[i2].state = "dead";
-                            score += Math.floor(children[i2].getSpeed() * 4);
+                            score += Math.floor(children[i2].getSpeed() * 40);
                             console.log("hit");
                         }
-                        else {
-                            console.log("else");
+                        if (SB.hitChildUp(children[i2].x, children[i2].y) == true && children[i2].state == "up") {
+                            children[i2].state = "dead";
+                            score += Math.floor(children[i2].getSpeed() * 40);
+                            console.log("hit");
                         }
                     }
                 }

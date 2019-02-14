@@ -32,15 +32,21 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 	<canvas id="canvas" width=320 height=460></canvas>
 		<!--<button type="button" id="button">Start</button>  -->
 		<div id=ende><h2>Ende</h2>
+		
+			<p id="abgabe"></p>
 		<p>Wenn du dein Ergebnis speichern möchtest, schreib einfach deinen Namen in die Box und drücke auf "Senden".</p>
 	    Name:<input type="text" id="textbox"></input>
 		<button type="button" id="insert">Senden</button>
-		<p>Nochmal spielen</p>
+
+		<fieldset id="output">
+		<button type="button" id="refresh">Bestenliste anzeigen</button>
+		<div id="scores"></div>
+		</fieldset>
+				<p>Nochmal spielen</p>
 		<button id="restart">Neustart</button>
-		<button type="button" id="refresh">Highscore</button>
 		</div>
-		<p id="abgabe"></p>
-	<div id="scores"></div>
+	
+	
 
 </body>
 </html>

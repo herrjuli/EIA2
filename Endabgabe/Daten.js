@@ -73,7 +73,7 @@ var Endabgabe;
     Endabgabe.Snowflakes = Snowflakes;
     class Children extends Move {
         getSpeed() {
-            return this.dx + this.dy;
+            return Math.abs(this.dx + this.dy);
         }
         draw() {
             if (this.state == "moveDown") {
@@ -81,6 +81,9 @@ var Endabgabe;
             }
             if (this.state == "dead") {
                 this.drawChildren1();
+            }
+            if (this.state == "up") {
+                this.drawChildren2();
             }
             else { }
         }
@@ -100,8 +103,9 @@ var Endabgabe;
             Endabgabe.crc2.stroke();
         }
         drawChildren1() {
-            Endabgabe.crc2.strokeStyle = "brown";
+            Endabgabe.crc2.strokeStyle = "lightblue";
             Endabgabe.crc2.fillStyle = "brown";
+            Endabgabe.crc2.lineWidth = 1;
             Endabgabe.crc2.beginPath();
             Endabgabe.crc2.moveTo(this.x, this.y);
             Endabgabe.crc2.lineTo(this.x + 5, this.y);
@@ -112,9 +116,40 @@ var Endabgabe;
             Endabgabe.crc2.fill();
             Endabgabe.crc2.stroke();
         }
+        drawChildren2() {
+            Endabgabe.crc2.strokeStyle = "#lightblue";
+            Endabgabe.crc2.fillStyle = "lightblue";
+            Endabgabe.crc2.lineWidth = 1;
+            Endabgabe.crc2.beginPath();
+            Endabgabe.crc2.moveTo(this.x - 20, this.y + 10);
+            Endabgabe.crc2.arc(this.x - 20, this.y + 10 - 5, 5, 45, 360);
+            Endabgabe.crc2.moveTo(this.x - 20, this.y + 5);
+            Endabgabe.crc2.lineTo(this.x + 5, this.y);
+            Endabgabe.crc2.lineTo(this.x + 5, this.y + 10);
+            Endabgabe.crc2.lineTo(this.x - 5, this.y + 10);
+            Endabgabe.crc2.lineTo(this.x - 5, this.y);
+            Endabgabe.crc2.closePath();
+            Endabgabe.crc2.fill();
+            Endabgabe.crc2.stroke();
+        }
         move() {
-            this.x -= this.dx;
-            this.y += this.dy;
+            if (this.x > Endabgabe.crc2.canvas.width + 5 || this.x < -5) {
+                this.state = "up";
+            }
+            if (this.y > Endabgabe.crc2.canvas.height + 5) {
+                this.state = "up";
+            }
+            if (this.y <= 102) {
+                this.state = "moveDown";
+            }
+            if (this.state == "moveDown" || this.state == "dead") {
+                this.x -= this.dx;
+                this.y += this.dy;
+            }
+            if (this.state == "up") {
+                this.x += this.dx;
+                this.y -= this.dy;
+            }
         }
     }
     Endabgabe.Children = Children;
@@ -122,6 +157,7 @@ var Endabgabe;
         draw() {
             if (this.r > 0) {
                 Endabgabe.crc2.beginPath;
+                Endabgabe.crc2.lineWidth = 1;
                 Endabgabe.crc2.moveTo(this.x, this.y);
                 Endabgabe.crc2.arc(this.x, this.y, this.r, 45, 360);
                 Endabgabe.crc2.closePath();
@@ -134,11 +170,31 @@ var Endabgabe;
         move() {
             this.r -= 2;
         }
-        hit(_x, _y) {
+        hitChildDown(_x, _y) {
             Endabgabe.crc2.lineWidth = 50;
             Endabgabe.crc2.beginPath();
             Endabgabe.crc2.moveTo(_x, _y);
             Endabgabe.crc2.arc(_x, _y - 5, 20, 45, 360);
+            Endabgabe.crc2.lineWidth = 0;
+            if (Endabgabe.crc2.isPointInPath(this.x, this.y) == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        hitChildUp(_x, _y) {
+            Endabgabe.crc2.lineWidth = 50;
+            Endabgabe.crc2.beginPath();
+            Endabgabe.crc2.moveTo(_x - 20, _y + 10);
+            Endabgabe.crc2.arc(_x - 20, _y + 10 - 5, 5, 45, 360);
+            Endabgabe.crc2.moveTo(_x - 20, _y + 5);
+            Endabgabe.crc2.lineTo(_x + 5, _y);
+            Endabgabe.crc2.lineTo(_x + 5, _y + 10);
+            Endabgabe.crc2.lineTo(_x - 5, _y + 10);
+            Endabgabe.crc2.lineTo(_x - 5, _y);
+            Endabgabe.crc2.closePath();
+            Endabgabe.crc2.lineWidth = 0;
             if (Endabgabe.crc2.isPointInPath(this.x, this.y) == true) {
                 return true;
             }
