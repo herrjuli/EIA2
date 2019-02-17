@@ -12,6 +12,7 @@ var Endabgabe;
         document.getElementById("button").addEventListener("click", play);
         document.getElementById("canvas").style.display = "initial";
         document.getElementById("ende").style.display = "none";
+        document.getElementById("liste").style.display = "initial";
         let canvas = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", createSB);
         Endabgabe.crc2 = canvas.getContext("2d");
@@ -53,6 +54,7 @@ var Endabgabe;
     function play() {
         setTimeout(end, 6000);
         //B�ume
+        document.getElementById("liste").style.display = "none";
         //Schneeflocken
         for (let i = 0; i < 20; i++) {
             let snowflake = new Endabgabe.Snowflakes();
@@ -226,6 +228,7 @@ var Endabgabe;
         }
     }
     function end() {
+        document.getElementById("liste").style.display = "initial";
         document.getElementById("canvas").style.display = "none";
         document.getElementById("anfang").style.display = "none";
         document.getElementById("ende").style.display = "initial";

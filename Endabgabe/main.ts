@@ -13,6 +13,7 @@ namespace Endabgabe {
         document.getElementById("button").addEventListener("click", play);
         document.getElementById("canvas").style.display = "initial";
         document.getElementById("ende").style.display = "none";
+         document.getElementById("liste").style.display = "initial";
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", createSB);
         crc2 = canvas.getContext("2d");
@@ -58,7 +59,7 @@ namespace Endabgabe {
         setTimeout(end, 6000);
         //Bäume
 
-
+ document.getElementById("liste").style.display = "none";
 
         //Schneeflocken
 
@@ -260,6 +261,7 @@ namespace Endabgabe {
         }
     }
     function end(): void {
+                 document.getElementById("liste").style.display = "initial";
         document.getElementById("canvas").style.display = "none";
         document.getElementById("anfang").style.display = "none";
         document.getElementById("ende").style.display = "initial";
