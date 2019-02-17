@@ -134,13 +134,14 @@ namespace Endabgabe {
             crc2.fillStyle = "lightblue";
             crc2.lineWidth = 1;
             crc2.beginPath();
-            crc2.moveTo(this.x - 20, this.y + 10);
-            crc2.arc(this.x - 20, this.y + 10 - 5, 5, 45, 360);
-            crc2.moveTo(this.x - 20, this.y + 5);
+            crc2.moveTo(this.x +5, this.y - 10);
+            crc2.arc(this.x +5, this.y - 10 - 5, 5, 45, 360);
+            crc2.moveTo(this.x +5 , this.y -10);
             crc2.lineTo(this.x + 5, this.y);
             crc2.lineTo(this.x + 5, this.y + 10);
             crc2.lineTo(this.x - 5, this.y + 10);
             crc2.lineTo(this.x - 5, this.y);
+            crc2.lineTo(this.x+5, this.y);
             crc2.closePath();
             crc2.fill();
             crc2.stroke();
@@ -210,8 +211,8 @@ namespace Endabgabe {
         hitChildUp(_x: number, _y: number): boolean {
             crc2.lineWidth = 50;
             crc2.beginPath();
-            crc2.moveTo(_x - 20, _y + 10);
-            crc2.arc(_x - 20, _y + 10 - 5, 5, 45, 360);
+            crc2.moveTo(_x - 5, _y - 10);
+            crc2.arc(_x + 5, _y - 10 - 5, 5, 45, 360);
             crc2.moveTo(_x - 20, _y + 5);
             crc2.lineTo(_x + 5, _y);
             crc2.lineTo(_x + 5, _y + 10);

@@ -10,9 +10,11 @@ var Endabgabe;
     let thrownSnowballs = [];
     function init(_event) {
         document.getElementById("button").addEventListener("click", play);
-        document.getElementById("canvas").style.display = "initial";
+        document.getElementById("canvas").style.display = "none";
         document.getElementById("ende").style.display = "none";
         document.getElementById("liste").style.display = "initial";
+        let refreshButton = document.getElementById("refresh");
+        refreshButton.addEventListener("click", DatabaseClient.refresh);
         let canvas = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", createSB);
         Endabgabe.crc2 = canvas.getContext("2d");
@@ -52,8 +54,8 @@ var Endabgabe;
     }
     //Spiel
     function play() {
-        setTimeout(end, 6000);
-        //B�ume
+        setTimeout(end, 60000);
+        document.getElementById("canvas").style.display = "initial";
         document.getElementById("liste").style.display = "none";
         //Schneeflocken
         for (let i = 0; i < 20; i++) {
@@ -242,8 +244,8 @@ var Endabgabe;
         document.getElementById("abgabe").setAttribute("value", score.toString());
         console.log(score);
         let insertButton = document.getElementById("insert");
-        let refreshButton = document.getElementById("refresh");
         insertButton.addEventListener("click", DatabaseClient.insert);
+        let refreshButton = document.getElementById("refresh");
         refreshButton.addEventListener("click", DatabaseClient.refresh);
         return;
     }

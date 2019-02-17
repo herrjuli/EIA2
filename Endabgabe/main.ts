@@ -11,9 +11,11 @@ namespace Endabgabe {
 
     function init(_event: Event): void {
         document.getElementById("button").addEventListener("click", play);
-        document.getElementById("canvas").style.display = "initial";
+        document.getElementById("canvas").style.display = "none";
         document.getElementById("ende").style.display = "none";
          document.getElementById("liste").style.display = "initial";
+        let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+        refreshButton.addEventListener("click", DatabaseClient.refresh);
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", createSB);
         crc2 = canvas.getContext("2d");
@@ -56,9 +58,9 @@ namespace Endabgabe {
     //Spiel
 
     function play() {
-        setTimeout(end, 6000);
-        //Bäume
-
+        setTimeout(end, 60000);
+      
+  document.getElementById("canvas").style.display = "initial";
  document.getElementById("liste").style.display = "none";
 
         //Schneeflocken
@@ -274,11 +276,10 @@ namespace Endabgabe {
         document.getElementById("abgabe").innerHTML = "Score" + score.toString();
         document.getElementById("abgabe").setAttribute("value", score.toString());
         console.log(score);
-        let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
-        let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
-        insertButton.addEventListener("click", DatabaseClient.insert);
-        refreshButton.addEventListener("click", DatabaseClient.refresh);
-
+            let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
+                    insertButton.addEventListener("click", DatabaseClient.insert);
+            let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+        refreshButton.addEventListener("click", DatabaseClient.refresh); 
         return;
     }
     function refresh(): void {
